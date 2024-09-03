@@ -1,66 +1,135 @@
+/*fonte*/
+
+@font-face {
+    font-family: 'antiqua'; 
+    src: url('../fonts/Inknut_Antiqua/InknutAntiqua-SemiBold.ttf');
+}
+
+@keyframes animaBotao{
+    from{
+        font-size:xx-large;
+        border-radius: 70px;
+        padding: 10px;
+        padding-left: 30px;
+        padding-right: 30px;  
+    }
+    to{
+        font-size:50%;
+        padding: 20px;
+        padding-left: 50px;
+        padding-right: 50px;  
+
+    }
+}
+
 body{
     margin: 0px;
 }
-
-/* 
-header{
-    display: flex;
-    justify-content: center;
-    
-} */
 
 a{
     text-decoration: none;
 }
 
+#conteudo{
+    background-image: url('../img/gettyimages-2112621265-612x612.jpg');
+}
+
 nav{
     display: flex;
-    flex-direction: row-reverse;
-
-    
-    
+    flex-direction: row-reverse;   
     a{
         margin: 10px;
         padding: 10px;
         border: 2px solid black;
         border-radius: 100%;
     }
-    
 }
 
 section{
     height: 88vh;
     width: 100vw;
-
     display: flex;
     justify-content: center;
     flex-direction: column;
-
     align-items: center;
     
 
     header{
         font-size: 50px;
         margin-bottom: 250px;
+        padding-right: 8%;
+        
+        p{
+            display:inline;
+            padding:100px;
+            font-size:110px;
+            font-family:"antiqua";
+        }
+        p.rosa{
+            color:hotpink
+        }
+        p.azul{
+            color:rgb(106, 196, 255);
+            position: absolute;
+            top:1%;
+            left: 32%;
+        }
+        p.yellow{
+            color:rgb(255, 217, 0);
+
+        }
+        p.green{
+            color:rgb(16, 189, 16);
+            position: absolute;
+            top:1%;
+            left: 47%;
+        }
+        p.verm{
+            color:red;
+            position: absolute;
+            top:1%;
+            left: 62%;
+        }
+        p.roxo{
+            color:blueviolet;
+
+        }
     }
 
     .btnStart{
-        width: 100px;
-        height: 15px;
-
-        border: 3px solid black;
-        border-radius: 20px;
-
-        padding: 10px;   
+        border: 2px solid white;
+        border-radius: 70px;
+        padding: 10px;
+        padding-left: 30px;
+        padding-right: 30px;   
         margin-bottom: 100px;
+        color:white;
+        background-color: rgb(36, 35, 35);
+        font-family:"antiqua";
+
+        animation-duration: 4s;
+        animation-name: animaBotao;
+        animation-iteration-count: infinite;
+        animation-direction: normal;
+        animation-delay: 3s;
+        
+
     }
 
 }
 
-
-
 footer{
-    display: flex;
-    
-    
+    display: inline-block;
+    width: 100%;
+    background-color:black;
+    padding-top:20px;
+    padding-bottom:20px;
+    color:white;
+    text-align: center;
+
+    img{
+        width: 3%;
+    }
 }
+
+
