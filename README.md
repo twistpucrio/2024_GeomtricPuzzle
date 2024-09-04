@@ -1,3 +1,0 @@
-# Geomtric Puzzle
-
-Tetris
