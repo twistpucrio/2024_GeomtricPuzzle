@@ -24,16 +24,19 @@
 @keyframes animaLetraBaixo{
     0%, 100% {
         transform:translateY(50%) rotate(0deg);
-
+        opacity: 1; 
     }
     25% {
         transform:  translateY(50%) rotate(-10deg);
+        opacity: 1; 
     }
     50% {
         transform: translateY(50%) rotate(10deg);
+        opacity: 1; 
     }
     75% {
         transform: translateY(50%) rotate(-10deg);
+        opacity: 1; 
     }
 }
 
@@ -41,45 +44,49 @@
 @keyframes animaLetraCima{
     0%, 100% {
         transform:rotate(0deg);
+        opacity: 1; 
 
     }
     25% {
         transform: rotate(-10deg);
+        opacity: 1; 
     }
     50% {
         transform: rotate(10deg);
+        opacity: 1; 
     }
     75% {
         transform:rotate(-10deg);
+        opacity: 1; 
     }
 }
 
 @keyframes quedaLetraCima {
     0% {
-        transform: translateY(-150%) rotate(0deg); 
+        opacity: 0; 
+        transform: translateY(-150%) rotate(0deg);
+        
     }
     100% {
+        opacity: 1; 
         transform: translateY(0) rotate(0deg); 
+        
     }
 }
 
 @keyframes quedaLetraBaixo {
     0% {
+        opacity: 0; 
         transform: translateY(-150%) rotate(0deg); 
+        
     }
     100% {
+        opacity: 1; 
         transform: translateY(50%) rotate(0deg); 
     }
 }
 
-@keyframes aparecerLetra {
-    0% {
-        opacity: 0; 
-    }
-    100% {
-        opacity: 1; 
-    }
-}
+
 
 body{
     margin: 0px;
@@ -116,7 +123,7 @@ section{
     header {
         font-size: 50px;
         margin-bottom: 250px;
-        padding-right: 8%;
+        line-height: 1.5;
         position: relative; 
     }
     
@@ -124,16 +131,17 @@ section{
         display: inline-block;
         font-size: 110px;
         font-family: "antiqua";
-        
         animation-duration: 1s;
+        letter-spacing: 35px;
         animation-fill-mode: forwards;
+        
         
     }
 
     p.rosa {
         color: hotpink;
-
-        animation: quedaLetraCima 1s ease-in-out, animaLetraCima 2s infinite ease-in-out;
+        opacity: 0;
+        animation:quedaLetraCima 1s ease-in-out, animaLetraCima 2s infinite ease-in-out;
         animation-delay: 0s, 1s; 
 }
     }
@@ -141,18 +149,21 @@ section{
     p.azul {
         color: rgb(106, 196, 255);
         transform: translateX(-10%) translateY(50%);
+        opacity: 0;
         animation: quedaLetraBaixo 1s ease-in-out, animaLetraBaixo 2s infinite ease-in-out;
         animation-delay: 0.5s, 1.5s;
     }
     
     p.yellow {
         color: rgb(255, 217, 0);
+        opacity: 0;
         animation: quedaLetraCima 1s ease-in-out, animaLetraCima 2s infinite ease-in-out;
         animation-delay: 1s, 2s;
     }
     
     p.green {
         color: rgb(16, 189, 16);
+        opacity: 0;
         transform: translateX(0%) translateY(50%);
         animation: quedaLetraBaixo 1s ease-in-out, animaLetraBaixo 2s infinite ease-in-out;
         animation-delay: 1.5s, 2.5s;
@@ -160,12 +171,14 @@ section{
 
     p.roxo {
         color: blueviolet;
+        opacity: 0;
         animation: quedaLetraCima 1s ease-in-out, animaLetraCima 2s infinite ease-in-out;
         animation-delay: 2s, 3s;
     }
 
     p.verm {
         color: red;
+        opacity: 0;
         transform: translateX(10%) translateY(50%);
         animation: quedaLetraBaixo 1s ease-in-out, animaLetraBaixo 2s infinite ease-in-out;
         animation-delay: 2.5s, 3.5s; 
@@ -183,7 +196,7 @@ section{
         background-color: rgb(36, 35, 35);
         font-family:"antiqua";
         position: relative;
-        top: -20vh; 
+        top: -10vh; 
         font-size:xx-large;
 
         animation-duration: 6s;
