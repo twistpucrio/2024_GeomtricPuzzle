@@ -1,0 +1,15 @@
+.popup{
+    display:none;
+    position: fixed;
+    bottom: 40%;
+    left: 35%;
+    width: 30%;
+    height: 30%;
+    background-color: rgb(129, 169, 204);
+    margin: 0%;
+    
+}
+
+/* .popup{
+    display: none;
+} */
