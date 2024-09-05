@@ -1,6 +1,6 @@
 
 .off-screen-menu{
-    background-color: rgb(224, 224, 223);
+    background-color: rgb(36, 35, 35);
     height: 25vh;
     width: 100%;
     max-width: 250px;
@@ -12,22 +12,74 @@
     display: flex;
     flex-direction: column;
     justify-content:space-around;
-    text-align:justify ;
-    font-size: 30px;
-    transition: .3s ease;
+    
+    
+    transition: .5s ease;
 
-    li{
-        list-style-type: none ;
-        padding: 10px 0px 10px 0px;
-        margin-right: 20px;
+    button{
+        font-family: "antiqua";
+        color: white;
+        text-align: justify ;
+        
+        background-color: inherit;
+
+        margin: 0px;
+        padding: 0%;
+        margin-left: 20px;
     }
 }
 
-.off-screen-menu.active{
+@keyframes animaMenu{
+
+    0%,100% {
+        width: 30%;
+        height:20%;
+        
+        transform: scale(1);
+        color: rgb(255, 253, 253);
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        font-size: 20px;
+    }
+    50% {
+        width: 60%;
+        height:20%;
+        
+        transform: scale(1.1);
+        color: rgb(247, 243, 243);
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        font-size: 30px;
+    }
+}
+
+.off-screen-menu.active {
+    
     top: 50px;
-    border-radius: 25px;
     margin-right: 20px;
     margin-top: 25px;
+
+    background-color: rgb(36, 35, 35);
+    border: 2px solid white;
+    border-radius: 25px;
+
+
+
+    .btnRegras, .btnFontes, .btnJogabilidades{
+        font-size: 20px;
+        border-style: none;
+
+        width: 30%;
+        height:20%;
+        
+    }
+
+    .btnRegras:hover, .btnJogabilidades:hover, .btnFontes:hover{
+
+        
+        animation-duration: 2s;
+        animation-name: animaMenu;
+        animation-iteration-count: infinite;
+        animation-direction: normal;
+    }
 }
 
 

@@ -19,15 +19,12 @@
      
         <section>
 
-
-            <img class="peca" src="assets/img/peca_01.png" alt="">
-
-            <article class="proxPeca"></article>
+            <canvas class="proxPeca"></canvas>
 
             <!-- tela de jogo -->
-            <article class="telaJogo"></article>
+            <canvas class="telaJogo" id="telaJogo"></canvas>
 
-            <article class="estadoJogo">
+            <canvas class="estadoJogo">
                 
                 <!-- score -->
                  <div id="scoreDiv">
@@ -42,14 +39,7 @@
                     <input type="text" name="linhasQuebradas" id="linhasQuebradas" class="caixinhas" readonly>
                  </div>
 
-            </article>
-           
-
-            <!-- tela de jogo -->
-            <article class="telaJogo"></article>
-
-            <article class="proxPeca"></article>
-            
+            </canvas>            
 
         </section>
         
@@ -59,6 +49,17 @@
 
     </div>
 
-    <script src="assets/scripts/pecas.js"></script>
+    <!-- <script src="assets/scripts/jogo.js"></script>
+    <script src="assets/scripts/pecas.js"></script> -->
+
+    <script type="text/javascript">
+
+        ctx.fillStyle = "#FFFF00"; //definição do preenchimento
+    
+        //pega o último estilo defindo antes dele
+        ctx.fillRect(10, 30, 300, 300) // pega a largura e altura do que está na const canvas
+
+    </script>
+    
 </body>
 </html>
