@@ -6,7 +6,11 @@
     <title>TETRIS</title>
 
     <link rel="stylesheet" href="assets/style/inicial.css">
+
+    <link rel="stylesheet" href="assets/style/pop-up.css">
+    <script src="assets/scripts/popup.js"></script>
     <link rel="stylesheet" href="assets/style/info.css">
+
 </head>
 <body>
     <div id="conteudo">      
@@ -39,6 +43,7 @@
             
         </nav>
      
+        
         <section>
             <header>
                 <p class = "rosa">T</p >
@@ -56,8 +61,33 @@
                  
                     -> ABRE O JOGO
             -->
+            <button type="button" id="btnRegras" name="btnRegras" class="btnRegras">Regras</button> <br>
+            <button type="button" id="btnJogabilidades" name="btnJogabilidades" class="btnJogabilidades">Jogabilidade</button>
+  <br>      <button type="button" id="btnFontes" name="btnFontes" class="btnFontes">Fontes</button>
+
+             
+            <br><br><br><br>
+            <br><br><br><br>
+            <br><br><br><br>
 
         </section>
+       
+        <article  id="regras" class="popup">
+            <br><br><br><p>re</p>
+            <button type="button" class="btnFechaRegra" id="btnFechaRegra" name="btnFechaRegra">X</button>
+        </article>
+
+        <article  id="jogabilidade" class="popup">
+            <br><br><br><p>jo</p>
+            <button type="button" class="btnFechaJogabilidade" id="btnFechaJogabilidade" name="btnFechaJogabilidade">X</button>
+        </article>
+
+        
+        <article  id="fontes" class="popup">
+            <br><br><br><p>fo</p>
+            <button type="button" class="btnFechafonte" id="btnFechaFonte" name="btnFechaFonte">X</button>
+        </article>
+
         
         <footer>
             <p>Criado por:<br/>Hanna Epelboim - Judy Faria - Luísa Silveira<br/>Twist 2024.2</p>
