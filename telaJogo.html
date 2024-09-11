@@ -1,54 +1,306 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-<head>
+<html lang="pt-BR">
+  <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TETRIS</title>
+
+
     <link rel="stylesheet" href="assets/style/telaJogo.css">
-    <link rel="stylesheet" href="assets/style/pecas.css">
-    <script src = "assets/scripts/jogo.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 
-</head>
-<body>
-    <div id="conteudo">      
+    <title>Tetris</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="buttons-container">
+        <button id="start-button">Começar/Pausar</button>
+        <button id="restart-button">Restart</button>
+        <a href="index.html">Voltar</a>
+      </div>
+
+      <div class="content-container">
+        <div class="grid">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div class="filled"></div>
+          <div class="filled"></div>
+          <div class="filled"></div>
+          <div class="filled"></div>
+          <div class="filled"></div>
+          <div class="filled"></div>
+          <div class="filled"></div>
+          <div class="filled"></div>
+          <div class="filled"></div>
+          <div class="filled"></div>
+        </div>
+
+        <div class="content-right">
+          <div class="mini-grid">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+
+          <h3>
+            Pontução:
+            <span class="score">0</span>
+          </h3>
+        </div>
+      </div>
+
+      <div class="mobile-buttons-container">
+        <button class="left-button">
+          <span class="material-icons">arrow_back</span>
+        </button>
+
+        <button class="rotate-button">
+          <span class="material-icons">rotate_right</span>
+        </button>
+
+        <button class="right-button">
+          <span class="material-icons">arrow_forward</span>
+        </button>
         
-        <nav>
-            <!-- pause (pop-up)-->
-                <a href="index.html">VOLTAR</a>
-        </nav>
-     
-        <section>
-            <article class="estadoJogo">
-                
-                <!-- score -->
-                 <div id="scoreDiv">
-                    <label for="score">Score:</label>
-                    <input type="text" name="score" id="score" class="caixinhas" readonly>
-                 </div>
-             
-                <!-- linhas quebradas -->
-                <div id="linhasQuebradasDiv">
-                    <label for="linhasQuebradas">Linhas Quebradas:</label>
-                    <input type="text" name="linhasQuebradas" id="linhasQuebradas" class="caixinhas" readonly>
-                 </div>
-            </article>
+        <button class="down-button">
+          <span class="material-icons">arrow_downward</span>
+        </button>
 
-            <!-- tela de jogo -->
-            <canvas id = "telaJogo" class="telaJogo" ></canvas>
+        <div></div>
 
-            <!-- tela da proxima peça -->
-            <canvas id = "proxPeca" class="proxPeca"></canvas>
+  </body>
+  <script src="assets/scripts/jogo.js"></script>
 
-            
-
-            
-           
-        </section>
-        
-        <footer>
-        </footer>
-
-    </div>
-
-</body>
 </html>
