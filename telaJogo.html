@@ -12,14 +12,27 @@
 
     <title>Tetris</title>
   </head>
-  <body>
-    <div class="container">
-      <div class="buttons-container">
-        <button id="start-button">Começar/Pausar</button>
-        <button id="restart-button">Restart</button>
-        <a href="index.html">Voltar</a>
-      </div>
+  <header></header>
 
+  <nav>
+    <a href="index.html">Voltar</a>
+  </nav>  
+  
+  <body>
+    <div id="popup" class="popup hidden">
+      <div class="popup-content">
+        <button id="resume-button">Resume</button>
+        <button id="restart-popup-button">Restart</button>
+        <button id="home-button">Home</button>
+      </div>
+    </div>
+    
+    <div class="buttons-container">
+      <button id="start-button">Começar</button>
+      <button id="pause-button" disabled>Pausar</button>
+    </div>
+    
+      <div class="overlay"></div>
       <div class="content-container">
         <div class="grid">
           <div></div>
