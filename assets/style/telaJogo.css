@@ -1,14 +1,11 @@
 /* body{
     margin: 0;
-    background: radial-gradient(#091bbe,#020461,black);
+    background: radial-gradient(#5d69cf,#2c2e8b,rgb(36, 31, 70));
 }
 
 nav{
     display: flex;
     flex-direction: row-reverse;
-
-    border-bottom: 2px solid black;
-
     a{
         margin: 10px;
         padding: 10px;
@@ -41,7 +38,8 @@ section{
         border: 2px solid black;
         background-color: rgb(23, 22, 32); 
         border-radius: 20px;
-
+        margin-left: 5vw;
+        margin-right: 5vw;
 
     }
 
@@ -78,17 +76,17 @@ section{
     .proxPeca{
         width: 20vw;
         height: 50vh;
-
         border: 2px solid black;
         background-color: rgb(31, 29, 34);
         border-radius: 20px;
-
-        margin-left: 20PX;
+        margin-left: 20px;
+        
     }
 
 
 
 }
+
 
 
 footer{
@@ -251,3 +249,4 @@ footer{
       display: block;
     }
   }
+

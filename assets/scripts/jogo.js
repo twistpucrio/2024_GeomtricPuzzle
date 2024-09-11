@@ -1,3 +1,4 @@
+
 const gridWidth = 10
 const shapeFreezeAudio = new Audio("./audios/audios_tetraminoFreeze.wav")
 const completedLineAudio = new Audio("./audios/audios_completedLine.wav")
