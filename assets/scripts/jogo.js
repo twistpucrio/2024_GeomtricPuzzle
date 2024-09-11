@@ -90,22 +90,46 @@ displayNextShape()
 
 
 // setInterval(moveDown, 700)
-let timeMoveDown = 700
-let timerId = null
-const $startStopButton = document.getElementById("start-button")
-$startStopButton.addEventListener("click", () => {
-  if (timerId) {
-    clearInterval(timerId)
-    timerId = null
-  } else {
-    timerId = setInterval(moveDown, timeMoveDown)
-  }
-})
+let timeMoveDown = 700;
+let timerId = null;
+const $startButton = document.getElementById("start-button");
+const $pauseButton = document.getElementById("pause-button");
+const $popup = document.getElementById("popup");
+const $resumeButton = document.getElementById("resume-button");
+const $restartPopupButton = document.getElementById("restart-popup-button");
+const $homeButton = document.getElementById("home-button");
+const overlay = document.querySelector(".overlay");
 
-const $restartButton = document.getElementById("restart-button")
-$restartButton.addEventListener("click", () => {
-  window.location.reload()
-})
+$startButton.addEventListener("click", () => {
+  if (!timerId) {
+    timerId = setInterval(moveDown, timeMoveDown);
+    $startButton.disabled = true;
+    $pauseButton.disabled = false;
+  }
+});
+
+$pauseButton.addEventListener("click", () => {
+  overlay.style.display = "block";
+  clearInterval(timerId);
+  timerId = null;
+  $popup.classList.remove("hidden");
+  $grid.classList.add("paused");
+});
+
+$resumeButton.addEventListener("click", () => {
+  overlay.style.display = "none";
+  timerId = setInterval(moveDown, timeMoveDown);
+  $popup.classList.add("hidden");
+  $grid.classList.remove("paused");
+});
+
+$restartPopupButton.addEventListener("click", () => {
+  window.location.reload();
+});
+
+$homeButton.addEventListener("click", () => {
+  window.location.href = "index.html";
+});
 
 function moveDown() {
   freeze()
