@@ -201,10 +201,14 @@ function checkIfRowIsFilled() {
   }
 }
 
+const $gameover = document.querySelector(".gameover");
+
 function gameOver() {
   if (currentShape.some(squareIndex => 
     $gridSquares[squareIndex + currentPosition].classList.contains("filled")  
   )) {
+    $gameover.style.display = 'block';
+
     updateScore(-10)
     clearInterval(timerId)
     timerId = null
