@@ -163,6 +163,16 @@ function updateScore(updateValue) {
   timerId = setInterval(moveDown, timeMoveDown)
 }
 
+const $line = document.querySelector(".linhaQuebrada")
+let line = 0
+
+function updateLine(updateValue){
+  line+=updateValue;
+  $line.textContent = line
+
+}
+
+
 let $grid = document.querySelector(".grid")
 function checkIfRowIsFilled() {
   for (var row = 0; row < $gridSquares.length; row += gridWidth) {
@@ -184,8 +194,8 @@ function checkIfRowIsFilled() {
       )
       $gridSquares = squaresRemoved.concat($gridSquares)
       $gridSquares.forEach(square => $grid.appendChild(square))
-
-      updateScore(97)
+      updateLine(1)
+      updateScore(100)
       completedLineAudio.play()
     }
   }
@@ -195,7 +205,7 @@ function gameOver() {
   if (currentShape.some(squareIndex => 
     $gridSquares[squareIndex + currentPosition].classList.contains("filled")  
   )) {
-    updateScore(-13)
+    updateScore(-10)
     clearInterval(timerId)
     timerId = null
     $startStopButton.disabled = true
@@ -220,7 +230,7 @@ function freeze() {
 
     checkIfRowIsFilled()
 
-    updateScore(13)
+    updateScore(10)
     shapeFreezeAudio.play()
 
     displayNextShape()
