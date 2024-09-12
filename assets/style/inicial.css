@@ -138,14 +138,16 @@ section{
         
     }
 
+   
+    }
+   
     p.rosa {
         color: hotpink;
         opacity: 0;
         animation:quedaLetraCima 1s ease-in-out, animaLetraCima 2s infinite ease-in-out;
         animation-delay: 0s, 1s; 
-}
     }
-    
+
     p.azul {
         color: rgb(106, 196, 255);
         transform: translateX(-10%) translateY(50%);

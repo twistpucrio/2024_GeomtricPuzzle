@@ -7,19 +7,32 @@
 
 
     <link rel="stylesheet" href="assets/style/telaJogo.css">
+    <link rel="stylesheet" href="assets/style/gameover.css".css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
 
     <title>Tetris</title>
   </head>
-  <body>
-    <div class="container">
-      <div class="buttons-container">
-        <button id="start-button">Começar/Pausar</button>
-        <button id="restart-button">Restart</button>
-        <a href="index.html">Voltar</a>
-      </div>
+  <header></header>
 
+  <nav>
+  </nav>  
+  
+  <body>
+    <div id="popup" class="popup hidden">
+      <div class="popup-content">
+        <button id="restart-popup-button">RESTART</button>
+        <button id="resume-button">RESUME</button>
+        <button id="home-button">HOME</button>
+      </div>
+    </div>
+    
+    <div class="buttons-container">
+      <button id="start-button"><img class = "icone" src= "assets/img/play.png"></img></button>
+      <button id="pause-button" disabled><img class = "icone" src= "assets/img/pause.png"></img></button>
+    </div>
+    
+      <div class="overlay"></div>
       <div class="content-container">
         <div class="grid">
           <div></div>
@@ -278,8 +291,26 @@
             Pontução:
             <span class="score">0</span>
           </h3>
+
+          
+          <h3>
+            Linhas quebradas:
+            <span class="linhaQuebrada">0</span>
+          </h3>
+
         </div>
       </div>
+      <div id="gameOver" class="gameover">
+        <p class="um">G</p>
+        <p class="dois">A</p>
+        <p class="tres">M</p>
+        <p class="quatro">E</p>
+        <p class="cinco">O</p>
+        <p class="seis">V</p>
+        <p class="sete">E</p>
+        <p class="oito">R</p>
+
+      </div>  
 
       <div class="mobile-buttons-container">
         <button class="left-button">

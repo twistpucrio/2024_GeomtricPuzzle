@@ -1,8 +1,15 @@
-/* body{
+@font-face {
+  font-family: 'antiqua'; 
+  src: url('../fonts/Inknut_Antiqua/InknutAntiqua-SemiBold.ttf');
+}
+
+body{
     margin: 0;
     background: radial-gradient(#5d69cf,#2c2e8b,rgb(36, 31, 70));
 }
 
+
+/* 
 nav{
     display: flex;
     flex-direction: row-reverse;
@@ -87,8 +94,6 @@ section{
 
 }
 
-
-
 footer{
     border-top: 2px solid black;
 } */
@@ -114,8 +119,10 @@ footer{
   
   .container {
     padding: 16px;
+    z-index: 2; /* Coloca a grade acima da sobreposição */
   }
   
+
   .buttons-container {
     margin-bottom: 16px;
     width: 280px;
@@ -123,17 +130,16 @@ footer{
     grid-template-columns: 1fr 1fr;
     gap: 8px;
   }
-  
+
   .buttons-container button {
-    border: none;
-    background: #1e2ede;
-    color: #fff;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 7px;
-    height: 32px;
+    background-color: transparent; 
+    border: none; 
+    cursor: pointer;
+  }
   
-    transition: filter 0.2s;
+  .icone{
+    width: 2.5vw;
+ 
   }
   
   .buttons-container button:hover {
@@ -152,6 +158,7 @@ footer{
   .grid {
     width: 200px;
     height: 400px;
+
     /* border: 2px solid black; */
     background-color: rgb(23, 22, 32); 
     
@@ -160,6 +167,12 @@ footer{
 
     display: flex; /* colocando uma div ao lado da outra*/
     flex-wrap: wrap; /* faz com que complita uma linha e vá para a de baixo */
+
+    background-color: black;
+    border-radius: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    
   }
  
   .grid div {
@@ -175,12 +188,19 @@ footer{
   
   .mini-grid {
 
+
     width: 240px;
     height: 240px;
     background-color: green;
     display: flex;
     flex-wrap: wrap; 
 
+    width: 120px;
+    height: 120px;
+    background-color: black;
+    border-radius: 20px;
+    display: flex;
+    flex-wrap: wrap;
 
   }
   
@@ -319,7 +339,62 @@ footer{
       height: 20px;
     }
 
-    .estadoJogo{
-      display: none;
-    }
+/*pop-up*/
+  .overlay {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 1;
+    display: none; 
   }
+
+
+
+.popup {
+  width: 20vw;
+  height: 35vh;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.popup-content{
+  display:flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap:30px;
+  flex-direction: column;
+
+}
+
+.popup-content button {
+  padding: 5px 0px;
+  background-color: #29637e;
+  color: white;
+  width: 80%;
+  font-family:antiqua;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+.grid.paused {
+  opacity: 0.5;
+}

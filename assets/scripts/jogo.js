@@ -90,22 +90,46 @@ displayNextShape()
 
 
 // setInterval(moveDown, 700)
-let timeMoveDown = 700
-let timerId = null
-const $startStopButton = document.getElementById("start-button")
-$startStopButton.addEventListener("click", () => {
-  if (timerId) {
-    clearInterval(timerId)
-    timerId = null
-  } else {
-    timerId = setInterval(moveDown, timeMoveDown)
-  }
-})
+let timeMoveDown = 700;
+let timerId = null;
+const $startButton = document.getElementById("start-button");
+const $pauseButton = document.getElementById("pause-button");
+const $popup = document.getElementById("popup");
+const $resumeButton = document.getElementById("resume-button");
+const $restartPopupButton = document.getElementById("restart-popup-button");
+const $homeButton = document.getElementById("home-button");
+const overlay = document.querySelector(".overlay");
 
-const $restartButton = document.getElementById("restart-button")
-$restartButton.addEventListener("click", () => {
-  window.location.reload()
-})
+$startButton.addEventListener("click", () => {
+  if (!timerId) {
+    timerId = setInterval(moveDown, timeMoveDown);
+    $startButton.disabled = true;
+    $pauseButton.disabled = false;
+  }
+});
+
+$pauseButton.addEventListener("click", () => {
+  overlay.style.display = "block";
+  clearInterval(timerId);
+  timerId = null;
+  $popup.classList.remove("hidden");
+  $grid.classList.add("paused");
+});
+
+$resumeButton.addEventListener("click", () => {
+  overlay.style.display = "none";
+  timerId = setInterval(moveDown, timeMoveDown);
+  $popup.classList.add("hidden");
+  $grid.classList.remove("paused");
+});
+
+$restartPopupButton.addEventListener("click", () => {
+  window.location.reload();
+});
+
+$homeButton.addEventListener("click", () => {
+  window.location.href = "index.html";
+});
 
 function moveDown() {
   freeze()
@@ -139,6 +163,16 @@ function updateScore(updateValue) {
   timerId = setInterval(moveDown, timeMoveDown)
 }
 
+const $line = document.querySelector(".linhaQuebrada")
+let line = 0
+
+function updateLine(updateValue){
+  line+=updateValue;
+  $line.textContent = line
+
+}
+
+
 let $grid = document.querySelector(".grid")
 function checkIfRowIsFilled() {
   for (var row = 0; row < $gridSquares.length; row += gridWidth) {
@@ -160,18 +194,22 @@ function checkIfRowIsFilled() {
       )
       $gridSquares = squaresRemoved.concat($gridSquares)
       $gridSquares.forEach(square => $grid.appendChild(square))
-
-      updateScore(97)
+      updateLine(1)
+      updateScore(100)
       completedLineAudio.play()
     }
   }
 }
 
+const $gameover = document.querySelector(".gameover");
+
 function gameOver() {
   if (currentShape.some(squareIndex => 
     $gridSquares[squareIndex + currentPosition].classList.contains("filled")  
   )) {
-    updateScore(-13)
+    $gameover.style.display = 'block';
+
+    updateScore(-10)
     clearInterval(timerId)
     timerId = null
     $startStopButton.disabled = true
@@ -196,7 +234,7 @@ function freeze() {
 
     checkIfRowIsFilled()
 
-    updateScore(13)
+    updateScore(10)
     shapeFreezeAudio.play()
 
     displayNextShape()
