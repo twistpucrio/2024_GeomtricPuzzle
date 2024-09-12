@@ -1,10 +1,15 @@
+@font-face {
+  font-family: 'antiqua'; 
+  src: url('../fonts/Inknut_Antiqua/InknutAntiqua-SemiBold.ttf');
+}
+
 body{
     margin: 0;
     background: radial-gradient(#5d69cf,#2c2e8b,rgb(36, 31, 70));
 }
 
 
-
+/* 
 nav{
     display: flex;
     flex-direction: row-reverse;
@@ -16,8 +21,6 @@ nav{
     }
 
 }
-
-/* 
 
 section{
     height: 88vh;
@@ -119,8 +122,6 @@ footer{
     z-index: 2; /* Coloca a grade acima da sobreposição */
   }
   
-  
-
 
   .buttons-container {
     margin-bottom: 16px;
@@ -129,17 +130,16 @@ footer{
     grid-template-columns: 1fr 1fr;
     gap: 8px;
   }
-  
+
   .buttons-container button {
-    border: none;
-    background: #1e2ede;
-    color: #fff;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 7px;
-    height: 32px;
+    background-color: transparent; 
+    border: none; 
+    cursor: pointer;
+  }
   
-    transition: filter 0.2s;
+  .icone{
+    width: 2.5vw;
+ 
   }
   
   .buttons-container button:hover {
@@ -273,7 +273,7 @@ footer{
   }
 
 .popup {
-  width: 35vw;
+  width: 20vw;
   height: 35vh;
   position: fixed;
   top: 50%;
@@ -288,11 +288,23 @@ footer{
   flex-direction: column;
   gap: 10px;
 }
+.popup-content{
+  display:flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap:30px;
+  flex-direction: column;
+
+}
 
 .popup-content button {
-  padding: 10px 20px;
-  background-color: #1e2ede;
+  padding: 5px 0px;
+  background-color: #29637e;
   color: white;
+  width: 80%;
+  font-family:antiqua;
   border: none;
   border-radius: 5px;
   cursor: pointer;
