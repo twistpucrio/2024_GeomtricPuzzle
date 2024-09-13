@@ -241,12 +241,15 @@ function checkIfRowIsFilled() {
 
 
 const $gameover = document.querySelector(".gameover");
+// const $overlayGameOver = document.querySelector(".overlayGameOver");
 
 
 function gameOver() {
   if (currentShape.some(squareIndex =>
     $gridSquares[squareIndex + currentPosition].classList.contains("filled")  
   )) {
+    overlay.style.display = "block";
+
     $gameover.style.display = 'block';
 
 

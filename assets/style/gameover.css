@@ -23,19 +23,19 @@
 
 @keyframes animaLetraBaixo{
     0%, 100% {
-        transform:translateY(-70%) rotate(0deg);
+        transform:translateY(-170%) rotate(0deg);
         opacity: 1; 
     }
     25% {
-        transform:  translateY(-70%) rotate(-10deg);
+        transform:  translateY(-170%) rotate(-10deg);
         opacity: 1; 
     }
     50% {
-        transform: translateY(-70%) rotate(10deg);
+        transform: translateY(-170%) rotate(10deg);
         opacity: 1; 
     }
     75% {
-        transform: translateY(-70%) rotate(-10deg);
+        transform: translateY(-170%) rotate(-10deg);
         opacity: 1; 
     }
 }  
@@ -43,20 +43,20 @@
 
 @keyframes animaLetraCima{
     0%, 100% {
-        transform:translateY(-120%) rotate(0deg);
+        transform:translateY(-210%) rotate(0deg);
         opacity: 1; 
 
     }
     25% {
-        transform:translateY(-120%) rotate(-10deg);
+        transform:translateY(-210%) rotate(-10deg);
         opacity: 1; 
     }
     50% {
-        transform:translateY(-120%) rotate(10deg);
+        transform:translateY(-210%) rotate(10deg);
         opacity: 1; 
     }
     75% {
-        transform:translateY(-120%) rotate(-10deg);
+        transform:translateY(-210%) rotate(-10deg);
         opacity: 1; 
     }
 }
@@ -64,22 +64,22 @@
 @keyframes quedaLetraCima {
     0% {
         opacity: 0; 
-        transform: translateY(-150%) rotate(0deg);     
+        transform: translateY(-250%) rotate(0deg);     
     }
     100% {
         opacity: 1; 
-        transform: translateY(-100%) rotate(0deg);    
+        transform: translateY(-210%) rotate(0deg);    
     }
 }
 
 @keyframes quedaLetraBaixo {
     0% {
         opacity: 0; 
-        transform: translateY(-150%) rotate(0deg);         
+        transform: translateY(-250%) rotate(0deg);         
     }
     100% {
         opacity: 1; 
-        transform: translateY(-50%) rotate(0deg); 
+        transform: translateY(-170%) rotate(0deg); 
     }
 }
 
@@ -93,7 +93,9 @@ p {
     letter-spacing: 35px;
     animation-fill-mode: forwards;
     color: red;  
-    text-shadow: 0 0 0.2em rgb(245, 20, 20), 0 0 0.2em rgb(139, 19, 19), 0 0 0.2em rgb(75, 2, 2), 0 0 0.2em rgb(48, 1, 1), 0 0 0.2em rgb(3, 3, 3);
+    text-shadow: 0.3em 0.3em 0.04em black;
+    /* text-shadow: 0 0 0.7em rgb(5, 0, 0), 0 0 0.7em rgb(3, 0, 0), 0 0 0.7em rgb(5, 0, 0); */
+    z-index: 1002;
 }
 
 p.um {
@@ -153,4 +155,30 @@ p.oito {
     display:none;
     text-align: center;
     font-size: xx-large;
-  }
+    z-index: 1000;
+
+    button {
+        padding: 5px 0px;
+        background-color: #29637e;
+        color: white;
+        width: 80%;
+        font-family:antiqua;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    
+}
+
+ 
+/* 
+.overlayGameOver {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    display: none;
+} */
