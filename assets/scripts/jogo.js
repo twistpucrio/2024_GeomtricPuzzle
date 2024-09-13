@@ -1,20 +1,26 @@
 
-const gridWidth = 10
+
 const shapeFreezeAudio = new Audio("./audios/audios_tetraminoFreeze.wav")
 const completedLineAudio = new Audio("./audios/audios_completedLine.wav")
 const gameOverAudio = new Audio("./audios/audios_gameOver.wav")
+
 
 const colors = ["blue", "yellow", "red", "orange", "pink"]
 let currentColor = Math.floor(Math.random() * colors.length)
 let nextColor = Math.floor(Math.random() * colors.length)
 
+
 // Shapes
+const gridWidth = 10
+
+
 const lShape = [
-  [1, 2, gridWidth + 1, gridWidth*2 + 1],
-  [gridWidth, gridWidth + 1, gridWidth + 2, gridWidth*2 + 2],
-  [1, gridWidth + 1, gridWidth*2, gridWidth*2 + 1],
-  [gridWidth, gridWidth*2, gridWidth*2 + 1, gridWidth*2 + 2]
+  [1, 2, gridWidth + 1, gridWidth*2 + 1], //primeira rotação
+  [gridWidth, gridWidth + 1, gridWidth + 2, gridWidth*2 + 2], //segunda rotação
+  [1, gridWidth + 1, gridWidth*2, gridWidth*2 + 1], //terceira rotação
+  [gridWidth, gridWidth*2, gridWidth*2 + 1, gridWidth*2 + 2] //quarta rotação
 ]
+
 
 const zShape = [
   [gridWidth + 1, gridWidth + 2, gridWidth*2, gridWidth*2 + 1],
@@ -23,12 +29,14 @@ const zShape = [
   [0, gridWidth, gridWidth + 1, gridWidth*2 + 1]
 ]
 
+
 const tShape = [
   [1, gridWidth, gridWidth + 1, gridWidth + 2],
   [1, gridWidth + 1, gridWidth + 2, gridWidth*2 + 1],
   [gridWidth, gridWidth + 1, gridWidth + 2, gridWidth*2 + 1],
   [1, gridWidth, gridWidth + 1, gridWidth*2 + 1]
 ]
+
 
 const oShape = [
   [0, 1, gridWidth, gridWidth + 1],
@@ -37,6 +45,7 @@ const oShape = [
   [0, 1, gridWidth, gridWidth + 1]
 ]
 
+
 const iShape = [
   [1, gridWidth + 1, gridWidth*2 + 1, gridWidth*3 + 1],
   [gridWidth, gridWidth + 1, gridWidth + 2, gridWidth + 3],
@@ -44,26 +53,32 @@ const iShape = [
   [gridWidth, gridWidth + 1, gridWidth + 2, gridWidth + 3]
 ]
 
-const allShapes = [lShape, zShape, tShape, oShape, iShape]
 
-let currentPosition = 3
-let currentRotation = 0
-let randomShape = Math.floor(Math.random() * allShapes.length)
-let currentShape = allShapes[randomShape][currentRotation]
-let $gridSquares = Array.from(document.querySelectorAll(".grid div"))
+const allShapes = [lShape, zShape, tShape, oShape, iShape] //todos as peças
+
+
+let currentPosition = 3 // onde os quadradinhos se iniciam, três divs para a direita
+let currentRotation = 0 // rotação inicial (primeira rotação)
+let randomShape = Math.floor(Math.random() * allShapes.length) // escolhe um número aleatório de acordo o numero de elementos na lista allshapes
+let currentShape = allShapes[randomShape][currentRotation] // peça escolhida aleatoriamente pelo random na rotação inicial definada acima, 0
+let $gridSquares = Array.from(document.querySelectorAll(".grid div")) // $ -> elemento do html já criado
+  //
+
 
 function draw() {
-  currentShape.forEach(squareIndex => {
-    $gridSquares[squareIndex + currentPosition].classList.add("shapePainted", `${colors[currentColor]}`)
+  currentShape.forEach(squareIndex => { //pega cada quadradinho e
+    $gridSquares[squareIndex + currentPosition].classList.add("shapePainted", `${colors[currentColor]}`) //adiciona uma classe de "shapePainted", alterandoo assim para o definido no css
   })
 }
 draw()
 
+
 function undraw() {
   currentShape.forEach(squareIndex => {
-    $gridSquares[squareIndex + currentPosition].classList.remove("shapePainted", `${colors[currentColor]}`)
+    $gridSquares[squareIndex + currentPosition].classList.remove("shapePainted", `${colors[currentColor]}`) // mesma coisa do draw(), porém ao invés de add a class "shapePainted", a remove
   })
 }
+
 
 const $miniGridSquares = document.querySelectorAll(".mini-grid div")
 let miniGridWidth = 6
@@ -76,21 +91,26 @@ const possibleNextShapes = [
   [1, miniGridWidth + 1, miniGridWidth*2 + 1, miniGridWidth*3 + 1]
 ]
 
+
 let nextRandomShape = Math.floor(Math.random() * possibleNextShapes.length)
 function displayNextShape() {
   $miniGridSquares.forEach(square => square.classList.remove("shapePainted", `${colors[nextColor]}`))
   nextRandomShape = Math.floor(Math.random() * possibleNextShapes.length)
   nextColor = Math.floor(Math.random() * colors.length)
   const nextShape = possibleNextShapes[nextRandomShape]
-  nextShape.forEach(squareIndex => 
+  nextShape.forEach(squareIndex =>
     $miniGridSquares[squareIndex + nextPosition + miniGridWidth].classList.add("shapePainted", `${colors[nextColor]}`)  
   )
 }
 displayNextShape()
 
 
+
+
+
+
 // setInterval(moveDown, 700)
-let timeMoveDown = 700;
+let timeMoveDown = 700; // velocidade que ele desce
 let timerId = null;
 const $startButton = document.getElementById("start-button");
 const $pauseButton = document.getElementById("pause-button");
@@ -100,6 +120,7 @@ const $restartPopupButton = document.getElementById("restart-popup-button");
 const $homeButton = document.getElementById("home-button");
 const overlay = document.querySelector(".overlay");
 
+
 $startButton.addEventListener("click", () => {
   if (!timerId) {
     timerId = setInterval(moveDown, timeMoveDown);
@@ -107,6 +128,7 @@ $startButton.addEventListener("click", () => {
     $pauseButton.disabled = false;
   }
 });
+
 
 $pauseButton.addEventListener("click", () => {
   overlay.style.display = "block";
@@ -116,6 +138,7 @@ $pauseButton.addEventListener("click", () => {
   $grid.classList.add("paused");
 });
 
+
 $resumeButton.addEventListener("click", () => {
   overlay.style.display = "none";
   timerId = setInterval(moveDown, timeMoveDown);
@@ -123,27 +146,34 @@ $resumeButton.addEventListener("click", () => {
   $grid.classList.remove("paused");
 });
 
+
 $restartPopupButton.addEventListener("click", () => {
   window.location.reload();
 });
+
 
 $homeButton.addEventListener("click", () => {
   window.location.href = "index.html";
 });
 
-function moveDown() {
-  freeze()
 
-  undraw()
-  currentPosition += 10
-  draw()
+/* MOVIMENTAÇÃO - PEÇA DESCENDO*/
+function moveDown() {
+  freeze() // verificando se precisa parar ou não
+
+
+  undraw() // desdesenha
+  currentPosition += 10 // vai para a div de baixo (na matrix)
+  draw() // desenha novamente a peça
 }
+
 
 const $score = document.querySelector(".score")
 let score = 0
 function updateScore(updateValue) {
   score += updateValue
   $score.textContent = score
+
 
   clearInterval(timerId)
   if (score <= 450) {
@@ -163,14 +193,19 @@ function updateScore(updateValue) {
   timerId = setInterval(moveDown, timeMoveDown)
 }
 
+
 const $line = document.querySelector(".linhaQuebrada")
 let line = 0
+
 
 function updateLine(updateValue){
   line+=updateValue;
   $line.textContent = line
 
+
 }
+
+
 
 
 let $grid = document.querySelector(".grid")
@@ -178,17 +213,20 @@ function checkIfRowIsFilled() {
   for (var row = 0; row < $gridSquares.length; row += gridWidth) {
     let currentRow = []
 
+
     for (var square = row; square < row + gridWidth; square++) {
       currentRow.push(square)
     }
 
-    const isRowPainted = currentRow.every(square => 
+
+    const isRowPainted = currentRow.every(square =>
       $gridSquares[square].classList.contains("shapePainted")  
     )
 
+
     if (isRowPainted) {
       const squaresRemoved = $gridSquares.splice(row, gridWidth)
-      squaresRemoved.forEach(square => 
+      squaresRemoved.forEach(square =>
         // square.classList.remove("shapePainted", "filled")
         square.removeAttribute("class")
       )
@@ -201,13 +239,16 @@ function checkIfRowIsFilled() {
   }
 }
 
+
 const $gameover = document.querySelector(".gameover");
 
+
 function gameOver() {
-  if (currentShape.some(squareIndex => 
+  if (currentShape.some(squareIndex =>
     $gridSquares[squareIndex + currentPosition].classList.contains("filled")  
   )) {
     $gameover.style.display = 'block';
+
 
     updateScore(-10)
     clearInterval(timerId)
@@ -218,13 +259,19 @@ function gameOver() {
   }
 }
 
+
+/* FAZ O QUADRADO PARAR AO FINAL DA TELA */
 function freeze() {
-  if (currentShape.some(squareIndex => 
-    $gridSquares[squareIndex + currentPosition + gridWidth].classList.contains("filled")
+  if (currentShape.some(squareIndex => // se algum quadrinho
+    $gridSquares[squareIndex + currentPosition + gridWidth].classList.contains("filled") // se + gridWidth -> quadradinho abaixo, tem essa class "filled"
   )) {
+
+
+    // se encostar em alguma div com class "filled", então, se torna um "filled", também
     currentShape.forEach(squareIndex => $gridSquares[squareIndex + currentPosition].classList.add("filled"))
 
-    // Criar um novo shape
+
+    // Criar um novo shape e colocando na posição inicial
     currentPosition = 3
     currentRotation = 0
     randomShape = nextRandomShape
@@ -232,43 +279,56 @@ function freeze() {
     currentColor = nextColor
     draw()
 
+
     checkIfRowIsFilled()
+
 
     updateScore(10)
     shapeFreezeAudio.play()
+
 
     displayNextShape()
     gameOver()
   }
 }
 
-function moveLeft() {
-  const isEdgeLimit = currentShape.some(squareIndex => (squareIndex + currentPosition) % gridWidth === 0)
-  if (isEdgeLimit) return
 
-  const isFilled = currentShape.some(squareIndex => 
-    $gridSquares[squareIndex + currentPosition - 1].classList.contains("filled")
+/* FUNÇÕES MOVIMENTAÇÃO */
+function moveLeft() {
+  // verificação de limite de borda
+  const isEdgeLimit = currentShape.some(squareIndex => (squareIndex + currentPosition) % gridWidth === 0) // se o resta divisão de cada número do quadradinho por 10 (gridWidth) = 0
+  if (isEdgeLimit) return // se estiver na borda esquerda, impedi o movimento
+ 
+
+
+  const isFilled = currentShape.some(squareIndex =>
+    $gridSquares[squareIndex + currentPosition - 1].classList.contains("filled")  
   )
   if (isFilled) return
 
-  undraw()
-  currentPosition -= 1
-  draw()
+
+  undraw() // deaparece
+  currentPosition -= 1 // diminui uma div, indo para a esquerda
+  draw() // desenha novamante
 }
 
-function moveRight() {
-  const isEdgeLimit = currentShape.some(squareIndex => (squareIndex + currentPosition) % gridWidth === gridWidth - 1)
-  if (isEdgeLimit) return
 
-  const isFilled = currentShape.some(squareIndex => 
+function moveRight() {
+  const isEdgeLimit = currentShape.some(squareIndex => (squareIndex + currentPosition) % gridWidth === gridWidth - 1) // se o resto da divisão de cada número do quadradinho por 10 (gridWidth) = 9
+  if (isEdgeLimit) return // se estiver na borda direita, impedi o movimento
+
+
+  const isFilled = currentShape.some(squareIndex =>
     $gridSquares[squareIndex + currentPosition + 1].classList.contains("filled")
   )
   if (isFilled) return
 
+
   undraw()
-  currentPosition += 1
+  currentPosition += 1 // aumenta uma div, indo para a direita
   draw()
 }
+
 
 function previousRotation() {
   if (currentRotation ===  0) {
@@ -279,16 +339,19 @@ function previousRotation() {
   currentShape = allShapes[randomShape][currentRotation]
 }
 
+
 function rotate() {
   undraw()
-  
+ 
   if (currentRotation === currentShape.length - 1) {
     currentRotation = 0
   } else {
     currentRotation += 1
   }
 
+
   currentShape = allShapes[randomShape][currentRotation]
+
 
   const isLeftEdgeLimit = currentShape.some(squareIndex => (squareIndex + currentPosition) % gridWidth === 0)
   const isRightEdgeLimit = currentShape.some(squareIndex => (squareIndex + currentPosition) % gridWidth === 9)
@@ -296,18 +359,21 @@ function rotate() {
     previousRotation()
   }
 
-  const isFilled = currentShape.some(squareIndex => 
+
+  const isFilled = currentShape.some(squareIndex =>
     $gridSquares[squareIndex + currentPosition].classList.contains("filled")  
   )
   if (isFilled) {
     previousRotation()
   }
 
+
   draw()
 }
 
-document.addEventListener("keydown", controlKeyboard)
 
+/* MOVIMENTAÇÃO - TECLADO */
+document.addEventListener("keydown", controlKeyboard)
 function controlKeyboard(event) {
   if (timerId) {
     if (event.key === "ArrowLeft") {
@@ -322,6 +388,8 @@ function controlKeyboard(event) {
   }
 }
 
+
+/* MOVIMENTAÇÃO - BOTÕES NA TELA */
 const isMobile = window.matchMedia('(max-width: 990px)').matches
 if (isMobile) {
   const mobileButtons = document.querySelectorAll(".mobile-buttons-container button")
@@ -339,3 +407,6 @@ if (isMobile) {
     }
   }))
 }
+
+
+
