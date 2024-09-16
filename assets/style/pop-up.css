@@ -1,14 +1,39 @@
 .popup{
     display:none;
     position: fixed;
-    bottom: 40%;
-    left: 35%;
-    width: 30%;
-    height: 30%;
-    background-color: rgb(129, 169, 204);
-    margin: 0%;
+    overflow: auto;
+    bottom: 27%;
+    left: 28%;
+    width: 45%;
+    height: 45%;
+    background-color: rgb(105, 126, 245);
+    margin: 0%;    
+
+    p{
+        position: fixed;
+        text-align: center justify;
+        .baixo{
+            bottom: 37%;
+            left: 35%;
+            width: 30%;
+        }   
+        
+
+        .cima{
+            bottom: 37%;
+            left: 35%;
+            width: 20%;   
+        }
+    }
+
+    li{
+        list-style-type: none;
+        text-align: center;
     
+    }
 }
+
+
 
 /* .popup{
     display: none;
