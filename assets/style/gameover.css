@@ -93,7 +93,7 @@ p {
     letter-spacing: 35px;
     animation-fill-mode: forwards;
     color: red;  
-    text-shadow: 0.3em 0.3em 0.04em black;
+    text-shadow: 0.2em 0.2em 0.04em black;
     /* text-shadow: 0 0 0.7em rgb(5, 0, 0), 0 0 0.7em rgb(3, 0, 0), 0 0 0.7em rgb(5, 0, 0); */
     z-index: 1002;
 }
@@ -155,21 +155,28 @@ p.oito {
     display:none;
     text-align: center;
     font-size: xx-large;
-    z-index: 1000;
-
-    button {
-        padding: 5px 0px;
-        background-color: #29637e;
-        color: white;
-        width: 80%;
-        font-family:antiqua;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-    
+    z-index: 1000;   
 }
 
 #gameoverBotoes{
-    z-index: 2;
+    display: none;
+    position: fixed;
+    bottom: 27%;
+    left: 27%;
+       
+    button{
+        z-index: 1;
+        font-family: "antiqua";
+        font-size: larger;
+        background-color: rgba(0, 0, 0, 0);
+        border-color: #29637e00;
+        color: aliceblue;  
+        cursor: pointer;
+    }
+
+    #homeGameover{
+        position: fixed;
+        bottom: 27%;
+        left: 58%;
+    }
 }
