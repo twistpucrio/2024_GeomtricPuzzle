@@ -1,65 +1,10 @@
-
-    var canvas = document.getElementById("telaJogo"); //pega o elemento html de id telaJogo para o canvas
-    alert(canvas);
-    var ctx = canvas.getContext("2d"); // transforma em 2d
-    var proxPecaCanvas = document.getElementById("proxPeca");  //pega o elemento html de id proxPeca para o canvas
-    var proxPecaCtx = nextPieceCanvas.getContext("2d"); // transforma em 2d
-
-    const ROWS = 20;
-    const COLS = 10;
-    var board = [];
-
-    function calcularTamanhoBloco() {
-        const canvasWidth = canvas.clientWidth;  
-        const canvasHeight = canvas.clientHeight;
-        const blockWidth = canvasWidth / COLS;
-        const blockHeight = canvasHeight / ROWS;
-        return Math.min(blockWidth, blockHeight); 
-    }
-
-    var BLOCK_SIZE = calcularTamanhoBloco();
-
-    function inicializaBoard() {
-        for (let r = 0; r < ROWS; r++) { // Itera sobre o número de linhas do tabuleiro.
-            board[r] = []; // Cria uma nova linha como um array vazio.
-            console.log(board[r])        
-            for (let c = 0; c < COLS; c++) { // Itera sobre o número de colunas do tabuleiro.
-                board[r][c] = { value: 0, color: null }; // Preenche cada célula com um objeto que contém 'value' e 'color'.
-                console.log("for coluna, ",board[r][c])
-            }
-        }
-    }
-
-    function desenharTabuleiro() {
-        for (let r = 0; r < ROWS; r++) {
-            for (let c = 0; c < COLS; c++) {
-                ctx.fillStyle = board[r][c].background-color || "white";  // Preenche com a cor do bloco (ou branco por padrão)
-                ctx.fillRect(c * BLOCK_SIZE, r * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);  // Desenha o bloco
-                ctx.strokeRect(c * BLOCK_SIZE, r * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);  // Desenha a borda do bloco
-            }
-        }
-    }
-
-    function inicializarJogo(){
-        let BLOCK_SIZE = calcularTamanhoBloco();  // Calcula o tamanho dos blocos
-        inicializaBoard();  // Inicializa o tabuleiro
-        desenharTabuleiro();  // Desenha o tabuleiro
-    }
-
-    window.addEventListener("load", function(){
-        //BLOCK_SIZE = calcularTamanhoBloco(); 
-        inicializarJogo();
-    });
+/* IMPORTANDO OS AUDIOS */
+// const shapeFreezeAudio = new Audio("./assets/audios/audios_tetraminoFreeze.wav")
+// const completedLineAudio = new Audio("./assets/audios/audios_completedLine.wav")
+// const gameOverAudio = new Audio("GEOMETRICPUZZLE/assets/audios/audios_gameOver.wav")
 
 
-    //window.onload = inicializarJogo;
-=======
-
-const shapeFreezeAudio = new Audio("./audios/audios_tetraminoFreeze.wav")
-const completedLineAudio = new Audio("./audios/audios_completedLine.wav")
-const gameOverAudio = new Audio("./audios/audios_gameOver.wav")
-
-
+/* CORES */
 const colors = ["blue", "yellow", "red", "orange", "pink"]
 let currentColor = Math.floor(Math.random() * colors.length)
 let nextColor = Math.floor(Math.random() * colors.length)
@@ -117,7 +62,7 @@ let currentRotation = 0 // rotação inicial (primeira rotação)
 let randomShape = Math.floor(Math.random() * allShapes.length) // escolhe um número aleatório de acordo o numero de elementos na lista allshapes
 let currentShape = allShapes[randomShape][currentRotation] // peça escolhida aleatoriamente pelo random na rotação inicial definada acima, 0
 let $gridSquares = Array.from(document.querySelectorAll(".grid div")) // $ -> elemento do html já criado
-  //
+  // transformamos em uma Array para podermos utilizar a função splice na verificação de linha completada
 
 
 function draw() {
@@ -135,8 +80,9 @@ function undraw() {
 }
 
 
+/* PRÓXIMA PEÇA */
 const $miniGridSquares = document.querySelectorAll(".mini-grid div")
-let miniGridWidth = 6
+let miniGridWidth = 7
 let nextPosition = 2
 const possibleNextShapes = [
   [1, 2, miniGridWidth + 1, miniGridWidth*2 + 1],
@@ -148,13 +94,17 @@ const possibleNextShapes = [
 
 
 let nextRandomShape = Math.floor(Math.random() * possibleNextShapes.length)
+
+
 function displayNextShape() {
   $miniGridSquares.forEach(square => square.classList.remove("shapePainted", `${colors[nextColor]}`))
   nextRandomShape = Math.floor(Math.random() * possibleNextShapes.length)
   nextColor = Math.floor(Math.random() * colors.length)
+
+
   const nextShape = possibleNextShapes[nextRandomShape]
   nextShape.forEach(squareIndex =>
-    $miniGridSquares[squareIndex + nextPosition + miniGridWidth].classList.add("shapePainted", `${colors[nextColor]}`)  
+    $miniGridSquares[squareIndex + nextPosition + (2*miniGridWidth)].classList.add("shapePainted", `${colors[nextColor]}`)
   )
 }
 displayNextShape()
@@ -178,7 +128,7 @@ const overlay = document.querySelector(".overlay");
 
 $startButton.addEventListener("click", () => {
   if (!timerId) {
-    timerId = setInterval(moveDown, timeMoveDown);
+    timerId = setInterval(moveDown, timeMoveDown); //
     $startButton.disabled = true;
     $pauseButton.disabled = false;
   }
@@ -187,8 +137,8 @@ $startButton.addEventListener("click", () => {
 
 $pauseButton.addEventListener("click", () => {
   overlay.style.display = "block";
-  clearInterval(timerId);
-  timerId = null;
+  clearInterval(timerId); // para de executar o timerId..
+  timerId = null; //tornando o timerId nulo
   $popup.classList.remove("hidden");
   $grid.classList.add("paused");
 });
@@ -203,7 +153,7 @@ $resumeButton.addEventListener("click", () => {
 
 
 $restartPopupButton.addEventListener("click", () => {
-  window.location.reload();
+  window.location.reload(); // atualiza a página
 });
 
 
@@ -223,11 +173,14 @@ function moveDown() {
 }
 
 
+/* PONTOS - SCORE */
 const $score = document.querySelector(".score")
 let score = 0
+
+
 function updateScore(updateValue) {
   score += updateValue
-  $score.textContent = score
+  $score.textContent = score // alterando no html o score
 
 
   clearInterval(timerId)
@@ -249,6 +202,11 @@ function updateScore(updateValue) {
 }
 
 
+
+
+/* VERIFICAÇÃO DE LINHA COMPLETADA */
+
+
 const $line = document.querySelector(".linhaQuebrada")
 let line = 0
 
@@ -261,10 +219,43 @@ function updateLine(updateValue){
 }
 
 
-
-
 let $grid = document.querySelector(".grid")
-function checkIfRowIsFilled() {
+
+
+function checkIfRowIsFilled() { // verificação linha a linha
+  // for (var row = 0; row < $gridSquares.length; row += gridWidth) { // executa a verificação até a último quadradinho, 209
+  //   let currentRow = []
+
+
+  //   for (var square = row; square < row + gridWidth; square++) { // pega cada quadrado dentro da linha (row)
+  //     currentRow.push(square) // adiciona o quadradinho dentro da lista currentRow
+  //   }
+
+
+  //   const isRowPainted = currentRow.every(square => // verifica se todos os quadradinhos da linha estão pintados
+  //     $gridSquares[square].classList.contains("shapePainted")
+  //   )
+
+
+  //   if (isRowPainted) { // se a linha estiver pintada...
+  //     const squaresRemoved = $gridSquares.splice(row, gridWidth) // splice( primeiro indice a ser removido, qtd de posições a serem removidos )
+  //     squaresRemoved.forEach(square =>
+  //       // square.classList.remove("shapePainted", "filled")
+  //       square.removeAttribute("class") // remove as classes que faz com que pinte as peças, deixando-a como o fundo
+  //     )
+  //     $gridSquares = squaresRemoved.concat($gridSquares) // pega a linha completada e coloca em cima, no início
+  //     $gridSquares.forEach(square => $grid.appendChild(square))
+  //     updateLine(1)
+  //     updateScore(100) // pontuação para linha completada = 100
+
+
+  //     completedLineAudio.play() // tocando o audio
+  //   }
+  // }
+
+
+
+
   for (var row = 0; row < $gridSquares.length; row += gridWidth) {
     let currentRow = []
 
@@ -275,36 +266,43 @@ function checkIfRowIsFilled() {
 
 
     const isRowPainted = currentRow.every(square =>
-      $gridSquares[square].classList.contains("shapePainted")  
+      $gridSquares[square].classList.contains("shapePainted")
     )
 
 
     if (isRowPainted) {
       const squaresRemoved = $gridSquares.splice(row, gridWidth)
-      squaresRemoved.forEach(square =>
-        // square.classList.remove("shapePainted", "filled")
-        square.removeAttribute("class")
-      )
+     
+      // Remova todas as classes de cor e 'shapePainted'
+      squaresRemoved.forEach(square => {
+        square.classList.remove("shapePainted", "filled")
+        colors.forEach(color => square.classList.remove(color)) // Removendo qualquer cor restante
+      })
+
+
+      // Atualize o grid com as linhas removidas reposicionadas no topo
       $gridSquares = squaresRemoved.concat($gridSquares)
       $gridSquares.forEach(square => $grid.appendChild(square))
+
+
+      // Atualiza o score e linha
       updateLine(1)
       updateScore(100)
-      completedLineAudio.play()
+     
+      completedLineAudio.play() // tocando o áudio de linha completada
     }
   }
 }
 
 
+/* GAME OVER */
 const $gameover = document.querySelector(".gameover");
-// const $overlayGameOver = document.querySelector(".overlayGameOver");
 
 
 function gameOver() {
   if (currentShape.some(squareIndex =>
-    $gridSquares[squareIndex + currentPosition].classList.contains("filled")  
+    $gridSquares[squareIndex + currentPosition].classList.contains("filled")
   )) {
-    overlay.style.display = "block";
-
     $gameover.style.display = 'block';
 
 
@@ -312,13 +310,15 @@ function gameOver() {
     clearInterval(timerId)
     timerId = null
     $startStopButton.disabled = true
-    gameOverAudio.play()
+    // gameOverAudio.play()
     $score.innerHTML += "<br />" + "GAME OVER"
   }
 }
 
 
 /* FAZ O QUADRADO PARAR AO FINAL DA TELA */
+
+
 function freeze() {
   if (currentShape.some(squareIndex => // se algum quadrinho
     $gridSquares[squareIndex + currentPosition + gridWidth].classList.contains("filled") // se + gridWidth -> quadradinho abaixo, tem essa class "filled"
@@ -338,14 +338,14 @@ function freeze() {
     draw()
 
 
-    checkIfRowIsFilled()
+    checkIfRowIsFilled() // verifica se completou a linha
 
 
-    updateScore(10)
-    shapeFreezeAudio.play()
-
-
+    updateScore(10) // quando uma peça para, ganha 10 pts
+    // shapeFreezeAudio.play() //tocando o audio
     displayNextShape()
+
+
     gameOver()
   }
 }
@@ -356,13 +356,14 @@ function moveLeft() {
   // verificação de limite de borda
   const isEdgeLimit = currentShape.some(squareIndex => (squareIndex + currentPosition) % gridWidth === 0) // se o resta divisão de cada número do quadradinho por 10 (gridWidth) = 0
   if (isEdgeLimit) return // se estiver na borda esquerda, impedi o movimento
- 
+
+
 
 
   const isFilled = currentShape.some(squareIndex =>
-    $gridSquares[squareIndex + currentPosition - 1].classList.contains("filled")  
+    $gridSquares[squareIndex + currentPosition - 1].classList.contains("filled")  // se encostar em algum com a classe "filled"...
   )
-  if (isFilled) return
+  if (isFilled) return // impede o movimento
 
 
   undraw() // deaparece
@@ -388,11 +389,11 @@ function moveRight() {
 }
 
 
-function previousRotation() {
+function previousRotation() { //verificação para rotação
   if (currentRotation ===  0) {
     currentRotation = currentShape.length - 1
   } else {
-    currentRotation--
+    currentRotation --
   }
   currentShape = allShapes[randomShape][currentRotation]
 }
@@ -400,29 +401,30 @@ function previousRotation() {
 
 function rotate() {
   undraw()
- 
+
+
   if (currentRotation === currentShape.length - 1) {
-    currentRotation = 0
+    currentRotation = 0 // se estiver na ultima rotação, volta para a primeira rotação
   } else {
-    currentRotation += 1
+    currentRotation += 1 // se não estiver na última rotação, vai para a próxima
   }
 
 
-  currentShape = allShapes[randomShape][currentRotation]
+  currentShape = allShapes[randomShape][currentRotation] //atualiza a peça na nova rotação
 
 
-  const isLeftEdgeLimit = currentShape.some(squareIndex => (squareIndex + currentPosition) % gridWidth === 0)
-  const isRightEdgeLimit = currentShape.some(squareIndex => (squareIndex + currentPosition) % gridWidth === 9)
-  if (isLeftEdgeLimit && isRightEdgeLimit) {
-    previousRotation()
+  const isLeftEdgeLimit = currentShape.some(squareIndex => (squareIndex + currentPosition) % gridWidth === 0) //se está no limite direito
+  const isRightEdgeLimit = currentShape.some(squareIndex => (squareIndex + currentPosition) % gridWidth === 9) //se está no limite esquerdo
+  if (isLeftEdgeLimit && isRightEdgeLimit) { // se estiver quebrando...
+    previousRotation() // "não deixa a rotação acontecer"
   }
 
 
   const isFilled = currentShape.some(squareIndex =>
-    $gridSquares[squareIndex + currentPosition].classList.contains("filled")  
+    $gridSquares[squareIndex + currentPosition].classList.contains("filled")
   )
-  if (isFilled) {
-    previousRotation()
+  if (isFilled) { // se for bater em outra peça
+    previousRotation() // não deixa rotacionar
   }
 
 
@@ -433,7 +435,9 @@ function rotate() {
 /* MOVIMENTAÇÃO - TECLADO */
 document.addEventListener("keydown", controlKeyboard)
 function controlKeyboard(event) {
-  if (timerId) {
+  if (timerId) { // só movimenta, de não estiver pausado
+
+
     if (event.key === "ArrowLeft") {
       moveLeft()
     } else if (event.key === "ArrowRight") {
@@ -443,14 +447,34 @@ function controlKeyboard(event) {
     } else if (event.key === "ArrowUp") {
       rotate()
     }
+
+
   }
 }
 
 
 /* MOVIMENTAÇÃO - BOTÕES NA TELA */
-const isMobile = window.matchMedia('(max-width: 990px)').matches
-if (isMobile) {
-  const mobileButtons = document.querySelectorAll(".mobile-buttons-container button")
+// const isMobile = window.matchMedia('(max-width: 990px)').matches
+// if (isMobile) {
+//   const mobileButtons = document.querySelectorAll(".mobile-buttons-container button")
+//   mobileButtons.forEach(button => button.addEventListener("click", () => {
+//     if (timerId) {
+//       if (button.classList[0] === "left-button") {
+//         moveLeft()
+//       } else if (button.classList[0] === "right-button") {
+//         moveRight()
+//       } else if (button.classList[0] === "down-button") {
+//         moveDown()
+//       } else if (button.classList[0] === "rotate-button") {
+//         rotate()
+//       }
+//     }
+//   }))
+// }
+const mobileButtons = document.querySelectorAll(".mobile-buttons-container button")
+const telaButtons = document.querySelectorAll(".tela-buttons-container button")
+
+
   mobileButtons.forEach(button => button.addEventListener("click", () => {
     if (timerId) {
       if (button.classList[0] === "left-button") {
@@ -464,7 +488,21 @@ if (isMobile) {
       }
     }
   }))
-}
+
+
+  telaButtons.forEach(button => button.addEventListener("click", () => {
+    if (timerId) {
+      if (button.classList[0] === "left-button") {
+        moveLeft()
+      } else if (button.classList[0] === "right-button") {
+        moveRight()
+      } else if (button.classList[0] === "down-button") {
+        moveDown()
+      } else if (button.classList[0] === "rotate-button") {
+        rotate()
+      }
+    }
+  }))
 
 
 
