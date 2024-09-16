@@ -6,50 +6,40 @@
     <title>TETRIS</title>
 
     <link rel="stylesheet" href="assets/style/inicial.css">
-
     <link rel="stylesheet" href="assets/style/pop-up.css">
-    <script src="assets/scripts/popup.js"></script>
     <link rel="stylesheet" href="assets/style/info.css">
+    <link rel="stylesheet" href="assets/style/conteudoPopup.css">
+
+    <script src="assets/scripts/popup.js"></script>
 
 </head>
 <body>
     <div id="conteudo">      
         
-        <div class="off-screen-menu">
+        <div class="off-screen-menu fonte">
             <!-- <ul>
                 <li class="regras">Regras</li>
                 <li class="howToPlay">How to play</li>
                 <li class="fontes">Fontes</li>
             </ul> -->
 
-            <button type="button" id="btnRegras" name="btnRegras" class="btnRegras">Regras</button> 
-            <button type="button" id="btnJogabilidades" name="btnJogabilidades" class="btnJogabilidades">Jogabilidade</button>
-            <button type="button" id="btnFontes" name="btnFontes" class="btnFontes">Fontes</button>
+            <button type="button" id="btnRegras" name="btnRegras" class="btnRegras fonte">Regras</button> 
+            <button type="button" id="btnJogabilidades" name="btnJogabilidades" class="btnJogabilidades fonte">Jogabilidade</button>
+            <button type="button" id="btnFontes" name="btnFontes" class="btnFontes fonte">Fontes</button>
 
         </div>
 
         <nav class="hamMenu">
-            <!-- menu -->
-            <!-- botão -->
-           
-            <!-- <a c href="regras.html">Info</a>      -->
-           
-            <span></span>
-            <span></span>
-            <span></span>
-           
-            <!-- btn sair -->
 
-            <!-- how to play -->
-                <!-- btn sair -->
-
-            <!-- fontes -->
-                <!-- btn sair -->
-            
+            <span></span>
+            <span></span>
+            <span></span>
+           
         </nav>
      
         
         <section>
+            
             <header>
                 <p class = "rosa">T</p >
                     <p class = "azul">E</p>
@@ -61,44 +51,55 @@
 
             
             <a class="btnStart" href="telaJogo.html">START GAME</a>
-            <!-- 
-                -> ESCOLHER NÍVEIS 
-                 
-                    -> ABRE O JOGO
-            -->
-           
 
         </section>
        
-        <article  id="regras" class="popup">
-            <h1>Regras</h1>
-            <h2>Goal</h2>
-            <p class="cima">Use suas habilidades de organização para preencher a linha com os blocos afim de completá-la e eliminá-la, avançando no jogo.</p>
-            <h2>Score</h2>
+        <article  id="regras" class="popup hidden">
+            <div class = "linha_titulo">
+                <h1 class = "title fonte">Regras</h1>
+                <img class = "linha" src = "assets/img/linha_tetris.png" alt = "Linha de peças do tetris.">
+            </div>
+
+            <div class = "peca_titulo">
+                <img src = "assets/img/peca_amarelo.png" alt = "Peça do tetris amarela.">
+                <h2 class = "fonte">Goal</h2>
+            </div>
+           
+            <p class = "fonte">Use suas habilidades de organização para preencher a linha com os blocos afim de completá-la e eliminá-la, avançando no jogo.</p>
+            
+            <div class = "peca_titulo">
+                <img src = "assets/img/peca_azul.png" alt = "Peça do tetris azul.">
+                <h2 class = "fonte">Score</h2>
+            </div>
             <ul>
-                <li>✓ 10 xp - por bloco</li>
+                <li class="fonte">&#9734; 10 xp - por bloco</li>
                 
-                <li>✓ 100 xp - por linha completada</li>
-            </ul>                 
-            <h2>GameOver</h2>     
+                <li class = "fonte">&#9734; 100 xp - por linha completada</li>
+            </ul>
+            
+            <div class = "peca_titulo">
+                <img src = "assets/img/peca_roxo.png" alt = "Peça do tetris roxa.">
+                <h2 class = "fonte">GameOver</h2>
+            </div>    
+
+                <p class="fonte"> Empilhar os blocos até o limite superior da tela de jogo.</p>
                 
-                <p class="baixo">Empilhar os blocos até o limite superior da tela de jogo</p>
-                
-            <button type="button" class="btnFechaRegra" id="btnFechaRegra" name="btnFechaRegra">X</button>
+            <button type="button" class="btnFechaRegra botao_fecha" id="btnFechaRegra" name="btnFechaRegras">X</button>
         </article>
 
-        <article  id="jogabilidade" class="popup">
+        <article  id="jogabilidade" class="popup hidden">
             <br><br><br><p>jo</p>
-            <button type="button" class="btnFechaJogabilidade" id="btnFechaJogabilidade" name="btnFechaJogabilidade">X</button>
+            <button type="button" class="btnFechaJogabilidade botao_fecha" id="btnFechaJogabilidade" name="btnFechaJogabilidade">X</button>
         </article>
 
         
-        <article  id="fontes" class="popup">
+        <article  id="fontes" class="popup hidden">
             <br><br><br><p>fo</p>
-            <button type="button" class="btnFechafonte" id="btnFechaFonte" name="btnFechaFonte">X</button>
+            <button type="button" class="btnFechafonte botao_fecha" id="btnFechaFonte" name="btnFechaFonte">X</button>
         </article>
 
-        
+        <div id="overlay" class="overlay"></div>
+
         <footer>
             <p>Criado por:<br/>Hanna Epelboim - Judy Faria - Luísa Silveira<br/>Twist 2024.2</p>
             <a href="https://github.com/twistpucrio/GeomtricPuzzle">
