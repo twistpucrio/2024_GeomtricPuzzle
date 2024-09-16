@@ -124,18 +124,12 @@ footer{
     box-sizing: border-box;
   }
  
-  button {
-    cursor: pointer;
-  }
  
-  button:disabled {
-    cursor: not-allowed;
-    opacity: 0.6;
-  }
  
-  body {
+ 
+  /* body {
     height: 100vh;
-  }
+  } */
  
   .container {
     padding: 16px;
@@ -146,10 +140,22 @@ footer{
 
   .buttons-container {
     margin-bottom: 16px;
-    width: 280px;
+    width: 100px;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 8px;
+    gap: 20px;
+
+
+    button {
+      cursor: pointer;
+    }
+
+
+    button:disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+   
   }
 
 
@@ -183,24 +189,17 @@ footer{
   .grid {
     width: 400px;
     height: 800px;
-
-
+   
     /* border: 2px solid black; */
     background-color: rgb(23, 22, 32);
    
     border-radius: 10px;
    
+    margin-top: 20px;
 
 
     display: flex; /* colocando uma div ao lado da outra*/
     flex-wrap: wrap; /* faz com que complita uma linha e vá para a de baixo */
-
-
-    background-color: black;
-    border-radius: 10px;
-    display: flex;
-    flex-wrap: wrap;
-   
   }
  
   .grid div {
@@ -208,17 +207,23 @@ footer{
     height: 40px;
   }
  
-  .content-right {
+  /* .content-right {
     display: flex;
     flex-direction: column;
     margin-left: 90px;
-  }
+  } */
  
+  #estadoJogo{
+    margin-left: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+
   .mini-grid {
-
-
-    width: 150px;
-    height: 150px;
+    width: 175px;
+    height: 175px;
     background-color: black;
     border-radius: 20px;
     display: flex;
@@ -265,108 +270,53 @@ footer{
     background: linear-gradient(to right, #cc0099, #ff80ff, #ff99ff);
   }
  
+  .tela-buttons-container{
+    margin-top: 20px;
+    max-width: 300px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* com 3 colunas de mesmo tamanho*/
+    grid-template-rows: 64px 64px; /* cada linha vai ter uma altura de 64px*/
+    gap: 12px; /* espaço entre eles*/
+
+
+    button{
+      background: linear-gradient(to right, #0033cc, #5c82f4);
+      border: none;
+      border-radius: 4px;
+
+
+      span{
+        color: white;
+        font-weight: 700;
+      }
+    }
+  }
  
   .mobile-buttons-container {
     margin-top: 20px;
     max-width: 300px;
-    /* display: none; */
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 64px 64px;
-    gap: 12px;
+    display: none;
+    grid-template-columns: repeat(3, 1fr); /* com 3 colunas de mesmo tamanho*/
+    grid-template-rows: 64px 64px; /* cada linha vai ter uma altura de 64px*/
+    gap: 12px; /* espaço entre eles*/
+ 
+    button{
+      background: linear-gradient(to right, #0033cc, #5c82f4);
+      border: none;
+      border-radius: 4px;
+
+
+      span{
+        color: white;
+        font-weight: 700;
+      }
+    }
+
+
   }
  
-  .mobile-buttons-container button {
-    background: linear-gradient(to right, #0033cc, #5c82f4);
-    border: none;
-    border-radius: 4px;
-  }
  
-  .mobile-buttons-container button span {
-    color: white;
-    font-weight: 700;
-  }
-
-
- 
- 
-
-
- 
-  /*  RESPONSIVIDADE  */
-
-
-  /* desktop -> min-width: 1024px */
-  /* tablet -> min-width: 768px e max-width: 1023px */
-  /* max-width: 767px */
-
-
-  /* DESKTOP */
-  @media screen and (max-width: 1024px) {
-    .grid {
-      width: 500px;
-      height: 1000px;
-     
-      background-color: rgb(23, 22, 32);
-     
-      border-radius: 20px;
-      /* margin-left: 5vw;
-      margin-right: 5vw; */
-
-
-      display: flex; /* colocando uma div ao lado da outra*/
-      flex-wrap: wrap; /* faz com que complita uma linha e vá para a de baixo */
-   
-    }
-   
-    .grid div {
-      width: 50px;
-      height: 50px;
-    }
-   
-  }
- 
-  /* TABLET */
-  @media screen and (min-width: 767px) and (max-width: 1023px){
-    .grid {
-      width: 400px;
-      height: 800px;
-      background-color: green;
-      display: flex; /* colocando uma div ao lado da outra*/
-      flex-wrap: wrap; /* faz com que complita uma linha e vá para a de baixo */
-    }
-   
-    .grid div {
-      width: 40px;
-      height: 40px;
-    }
-  }
-
-
-
-
-  /* SMARTPHONE  -> enquanto a tela for menor que 767px*/
- 
-
-
-  @media screen and (min-width: 1px) and (max-width: 766px){
-    .grid {
-      width: 200px;
-      height: 400px;
-      background-color: green;
-      display: flex; /* colocando uma div ao lado da outra*/
-      flex-wrap: wrap; /* faz com que complita uma linha e vá para a de baixo */
-    }
-   
-    .grid div {
-      width: 20px;
-      height: 20px;
-    }
-  }
-
-
-
-
-/*pop-up*/
+  /*pop-up*/
   .overlay {
     position: fixed;
     top: 0;
@@ -374,7 +324,7 @@ footer{
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
-    /* z-index: 1; */
+    z-index: 1;
     display: none;
   }
 
@@ -432,6 +382,261 @@ footer{
 .grid.paused {
   opacity: 0.5;
 }
+
+
+
+
+ 
+  /*  RESPONSIVIDADE  */
+
+
+  /* desktop -> min-width: 1024px */
+  /* tablet -> min-width: 768px e max-width: 1023px */
+  /* max-width: 767px */
+
+
+  /* DESKTOP */
+  @media screen and (min-width: 1024px) /* 1024 ou mais*/ {
+    .grid {
+      width: 425px;
+      height: 850px;
+      background-color: rgb(0, 0, 0);
+      display: flex; /* colocando uma div ao lado da outra*/
+      flex-wrap: wrap; /* faz com que complita uma linha e vá para a de baixo */
+    }
+   
+    .grid div {
+      width: 42.5px;
+      height: 42.5px;
+    }
+
+
+    #estadoJogo{
+      margin-left: 90px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+
+      .mini-grid {
+        width: 210px;
+        height: 210px;
+       
+        margin-top: 100px;
+        margin-bottom: 100px;
+        background-color: black;
+        border-radius: 20px;
+        display: flex;
+        flex-wrap: wrap;
+   
+        div {
+          width: 30px;
+          height: 30px;
+        }
+      }
+
+
+      .tela-buttons-container{
+        margin-top: 100px;
+        margin-left: -30px;
+        width: 250px;
+        height: 200px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* com 3 colunas de mesmo tamanho*/
+        grid-template-rows: 64px 64px; /* cada linha vai ter uma altura de 64px*/
+        gap: 12px; /* espaço entre eles*/
+   
+        button{
+          background: linear-gradient(to right, #0033cc, #5c82f4);
+          border: none;
+          border-radius: 4px;
+   
+          span{
+            color: white;
+            font-weight: 700;
+          }
+        }
+      }
+  }
+}
+ 
+  /* TABLET */
+  @media screen and (min-width: 800px) and (max-width: 1023px){
+    .grid {
+      width: 425px;
+      height: 850px;
+      background-color: green;
+      display: flex; /* colocando uma div ao lado da outra*/
+      flex-wrap: wrap; /* faz com que complita uma linha e vá para a de baixo */
+    }
+   
+    .grid div {
+      width: 42.5px;
+      height: 42.5px;
+    }
+
+
+    #estadoJogo{
+      margin-left: 90px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+
+      .mini-grid {
+        width: 210px;
+        height: 210px;
+       
+        margin-top: 100px;
+        margin-bottom: 100px;
+        background-color: black;
+        border-radius: 20px;
+        display: flex;
+        flex-wrap: wrap;
+   
+        div {
+          width: 30px;
+          height: 30px;
+        }
+      }
+
+
+      .tela-buttons-container{
+        margin-top: 100px;
+        margin-left: -30px;
+        width: 250px;
+        height: 200px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* com 3 colunas de mesmo tamanho*/
+        grid-template-rows: 64px 64px; /* cada linha vai ter uma altura de 64px*/
+        gap: 12px; /* espaço entre eles*/
+   
+        button{
+          background: linear-gradient(to right, #0033cc, #5c82f4);
+          border: none;
+          border-radius: 4px;
+   
+          span{
+            color: white;
+            font-weight: 700;
+          }
+        }
+      }
+    }
+
+
+   
+   
+    .popup {
+      width: 35vw;
+      height: 35vh;
+    }
+
+
+   
+  }
+
+
+
+
+  /* SMARTPHONE  -> enquanto a tela for menor que 767px*/
+ 
+
+
+  @media screen and (min-width: 1px) and (max-width: 800px){
+    .content-container {
+      display: flex;
+      /* justify-content: center; */
+      flex-direction: row;
+ 
+      /* align-items:normal; */
+    }
+   
+    .grid {
+      width: 350px;
+      height: 700px;
+      background-color: rgb(160, 131, 255);
+      display: flex; /* colocando uma div ao lado da outra*/
+      flex-wrap: wrap; /* faz com que complita uma linha e vá para a de baixo */
+   
+      margin-top: 20px;
+    }
+   
+    .grid div {
+      width: 35px;
+      height: 35px;
+    }
+
+
+    #estadoJogo{
+      display:flex;
+      align-items: center;
+
+
+      margin-left: 20px;
+      max-width: 200px;
+     
+      .mini-grid {
+        width: 154px;
+        height: 154px;
+        background-color: black;
+        border-radius: 20px;
+        display: flex;
+        flex-wrap: wrap;
+   
+        div {
+          width: 22px;
+          height: 22px;
+        }
+      }
+    }
+
+
+    .tela-buttons-container{
+      display: none;
+    }
+
+
+    .mobile-buttons-container {
+      margin-top: 10px;
+      margin-bottom: 0px;
+      margin-left: 150px;
+     
+      max-width: 300px;
+      max-height: 0px;
+
+
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* com 3 colunas de mesmo tamanho*/
+      grid-template-rows: 64px 64px; /* cada linha vai ter uma altura de 64px*/
+      gap: 12px; /* espaço entre eles*/
+    }
+
+
+   
+    .mobile-buttons-container button {
+      background: linear-gradient(to right, #0033cc, #5c82f4);
+      border: none;
+      border-radius: 4px;
+    }
+   
+    .mobile-buttons-container button span {
+      color: white;
+      font-weight: 700;
+    }
+
+
+    .popup {
+      width: 30vw;
+      height: 30vh;
+     
+    }
+  }
+
+
+
+
+ 
 
 
 

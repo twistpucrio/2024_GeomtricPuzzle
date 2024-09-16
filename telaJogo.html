@@ -6,66 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
+
+
     <link rel="stylesheet" href="assets/style/telaJogo.css">
     <link rel="stylesheet" href="assets/style/gameover.css".css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
 
-</head>
-<body>
-    <div id="conteudo">      
-        
-        <nav>
-            <!-- pause (pop-up)-->
-                <a href="index.html">VOLTAR</a>
-        </nav>
-     
-        <section>
-            <article class="estadoJogo">
-                
-                <!-- score -->
-                 <div id="scoreDiv">
-                    <label for="score">Score:</label>
-                    <input type="text" name="score" id="score" class="caixinhas" readonly>
-                 </div>
-             
-                <!-- linhas quebradas -->
-                <div id="linhasQuebradasDiv">
-                    <label for="linhasQuebradas">Linhas Quebradas:</label>
-                    <input type="text" name="linhasQuebradas" id="linhasQuebradas" class="caixinhas" readonly>
-                 </div>
-            </article>
 
-            <!-- tela de jogo -->
-            <canvas id = "telaJogo" width="300" height="300"></canvas>
+    <title>Tetris</title>
+  </head>
+  <header></header>
 
-            <!-- tela da proxima peça -->
-            <canvas id = "proxPeca" class="proxPeca"></canvas>
 
-            
-
-            
-           
-        </section>
-        
-        <footer>
-        </footer>
-
-  
+  <nav>
+  </nav>  
+ 
   <body>
-    <div id="popup" class="popup hidden">
-      <div class="popup-content">
-        <button id="restart-popup-button">RESTART</button>
-        <button id="resume-button">RESUME</button>
-        <button id="home-button">HOME</button>
-      </div>
-    </div>
-    
-    <div class="buttons-container">
-      <button id="start-button"><img class = "icone" src= "assets/img/play.png"></img></button>
-      <button id="pause-button" disabled><img class = "icone" src= "assets/img/pause.png"></img></button>
-    </div>
-    
       <div class="overlay"></div>
       <div class="content-container">
         <div class="grid">
@@ -281,7 +238,22 @@
           <div class="filled"></div>
         </div>
 
-        <div class="content-right">
+
+        <div id="estadoJogo">
+          <div id="popup" class="popup hidden">
+            <div class="popup-content">
+              <button id="restart-popup-button">RESTART</button>
+              <button id="resume-button">RESUME</button>
+              <button id="home-button">HOME</button>
+            </div>
+          </div>
+         
+          <div class="buttons-container">
+            <button id="start-button"><img class = "icone" src= "assets/img/play.png"></img></button>
+            <button id="pause-button" disabled><img class = "icone" src= "assets/img/pause.png"></img></button>
+          </div>
+
+
           <div class="mini-grid">
             <div></div>
             <div></div>
@@ -298,7 +270,20 @@
             <div></div>
             <div></div>
             <div></div>
-            <div></div>  
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
             <div></div>
             <div></div>
             <div></div>
@@ -321,40 +306,43 @@
             <div></div>
           </div>
 
-          <h3>
-            Pontução:
-            <span class="score">0</span>
-          </h3>
 
-          
           <h3>
-            Linhas quebradas:
+            Pts:
+            <span class="score">0</span>
+          </h3>  
+         
+          <h3>
+            Linhas:
             <span class="linhaQuebrada">0</span>
           </h3>
 
+
+          <div class="tela-buttons-container">
+            <div></div> <!-- para ocupar espaço de um botão, fazendo com que o de baixo fique no meio-->
+            <button class="rotate-button">
+              <span class="material-icons">rotate_right</span>
+            </button>
+            <div></div> <!-- para ocupar espaço de um botão, fazendo com que o de baixo fique no meio-->
+            <button class="left-button">
+              <span class="material-icons">arrow_back</span>
+            </button>
+   
+            <button class="down-button">
+              <span class="material-icons">arrow_downward</span>
+            </button>
+   
+            <button class="right-button">
+              <span class="material-icons">arrow_forward</span>
+            </button>
+         
+          </div>
+         
         </div>
+       
+       
+       
       </div>
-      
-
-      <div class="mobile-buttons-container">
-        <button class="left-button">
-          <span class="material-icons">arrow_back</span>
-        </button>
-
-        <button class="rotate-button">
-          <span class="material-icons">rotate_right</span>
-        </button>
-
-        <button class="right-button">
-          <span class="material-icons">arrow_forward</span>
-        </button>
-        
-        <button class="down-button">
-          <span class="material-icons">arrow_downward</span>
-        </button>
-
-        <div></div>
-      </div> 
       <div id="gameOver" class="gameover">
         <p class="um">G</p>
         <p class="dois">A</p>
@@ -364,12 +352,35 @@
         <p class="seis">V</p>
         <p class="sete">E</p>
         <p class="oito">R</p>
-        <button id="gameover-restart-button">RESTART</button>
-        <button id="gameover-home-button">HOME</button>
-      </div> 
-      <!-- <div class="overlayGameOver"></div> -->
 
+
+      </div>  
+
+
+      <div class="mobile-buttons-container">
+        <div></div> <!-- para ocupar espaço de um botão, fazendo com que o de baixo fique no meio-->
+        <button class="rotate-button">
+          <span class="material-icons">rotate_right</span>
+        </button>
+        <div></div> <!-- para ocupar espaço de um botão, fazendo com que o de baixo fique no meio-->
+        <button class="left-button">
+          <span class="material-icons">arrow_back</span>
+        </button>
+
+
+        <button class="down-button">
+          <span class="material-icons">arrow_downward</span>
+        </button>
+
+
+        <button class="right-button">
+          <span class="material-icons">arrow_forward</span>
+        </button>
+     
+      </div>
   </body>
   <script src="assets/scripts/jogo.js"></script>
 
+
 </html>
+
