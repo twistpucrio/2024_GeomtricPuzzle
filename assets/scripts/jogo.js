@@ -272,7 +272,7 @@ function checkIfRowIsFilled() { // verificação linha a linha
 
     if (isRowPainted) {
       const squaresRemoved = $gridSquares.splice(row, gridWidth)
-     
+
       // Remova todas as classes de cor e 'shapePainted'
       squaresRemoved.forEach(square => {
         square.classList.remove("shapePainted", "filled")
@@ -288,7 +288,7 @@ function checkIfRowIsFilled() { // verificação linha a linha
       // Atualiza o score e linha
       updateLine(1)
       updateScore(100)
-     
+
       completedLineAudio.play() // tocando o áudio de linha completada
     }
   }
@@ -304,7 +304,7 @@ function gameOver() {
     $gridSquares[squareIndex + currentPosition].classList.contains("filled")
   )) {
     $gameover.style.display = 'block';
-
+    overlay.style.display = 'block';
 
     updateScore(-10)
     clearInterval(timerId)
