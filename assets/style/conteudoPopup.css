@@ -31,8 +31,29 @@ li{
     text-align: center;
 }
 
+
 .linha_titulo{
     display: flex;
     flex-direction: column; 
     align-items: center;
 }
+
+#fontes li{
+    padding:1%;
+}
+
+#fontes a{
+    text-decoration: none;
+    color: black;
+}
+
+#fontes a:hover {
+    color: #3b5f8f; /* Altere para a cor desejada ao passar o mouse */
+}
+
+#fontes a:active {
+    color: #5e1468; /* Altere para a cor desejada no clique */
+}
+
+
+
