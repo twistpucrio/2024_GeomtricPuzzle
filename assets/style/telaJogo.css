@@ -6,7 +6,7 @@
 
 body{
     margin: 0;
-    background: radial-gradient(#3f489c,#2c2e8b,rgb(28, 24, 54));
+    background: radial-gradient(#5d69cf,#2c2e8b,rgb(36, 31, 70));
 }
 
 
@@ -188,7 +188,6 @@ footer{
   /* board de jogo */
   .grid {
     width: 400px;
-    /*minha tela luisa 550 altura*/
     height: 800px;
    
     /* border: 2px solid black; */
@@ -260,23 +259,15 @@ footer{
   }
  
   .red {
-    background: linear-gradient(to right, #ff0000, #ff3333, #ff6666);
+    background: linear-gradient(to right, #ff3300, #ff5c33, #ff8566);
   }
  
   .orange {
-    background: linear-gradient(to right, #ec4c01, #ff751a, #ff944d);
+    background: linear-gradient(to right, #b34700, #ff751a, #ff944d);
   }
  
   .pink {
-    background: linear-gradient(to right, #cc005f, #ff80ce, #ff99dd);
-  }
-
-  .green {
-    background: linear-gradient(to right, #00cc22, #80ff95, #99ffa2);
-  }
-
-  .purple {
-    background: linear-gradient(to right, #a300cc, #f080ff, #f399ff);
+    background: linear-gradient(to right, #cc0099, #ff80ff, #ff99ff);
   }
  
   .tela-buttons-container{
@@ -321,8 +312,9 @@ footer{
       }
     }
 
-  }
 
+  }
+ 
  
   /*pop-up*/
   .overlay {
@@ -332,11 +324,17 @@ footer{
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
     display: none;
   }
 
+
+
+
+
+
 .popup {
-  width: 25vw;
+  width: 20vw;
   height: 35vh;
   position: fixed;
   top: 50%;
@@ -365,7 +363,7 @@ footer{
 
 
 .popup-content button {
-  padding: 3px 0px;
+  padding: 5px 0px;
   background-color: #29637e;
   color: white;
   width: 80%;
@@ -534,7 +532,6 @@ footer{
       height: 35vh;
     }
 
-
    
   }
 
@@ -553,11 +550,15 @@ footer{
  
       /* align-items:normal; */
     }
+    
+    body{
+      align-items: center;
+    }
    
     .grid {
-      width: 350px;
+      width: 320px;
       height: 700px;
-      background-color: rgb(160, 131, 255);
+      background-color: rgb(186, 97, 228);
       display: flex; /* colocando uma div ao lado da outra*/
       flex-wrap: wrap; /* faz com que complita uma linha e vá para a de baixo */
    
@@ -565,7 +566,7 @@ footer{
     }
    
     .grid div {
-      width: 35px;
+      width: 32px;
       height: 35px;
     }
 
@@ -574,8 +575,7 @@ footer{
       display:flex;
       align-items: center;
 
-
-      margin-left: 20px;
+      margin-left: 15px;
       max-width: 200px;
      
       .mini-grid {
@@ -600,9 +600,9 @@ footer{
 
 
     .mobile-buttons-container {
-      margin-top: 10px;
+      margin-top: 80px;
       margin-bottom: 0px;
-      margin-left: 150px;
+      margin-left: 130px;
      
       max-width: 300px;
       max-height: 0px;
@@ -617,7 +617,7 @@ footer{
 
    
     .mobile-buttons-container button {
-      background: linear-gradient(to right, #0033cc, #5c82f4);
+      background: linear-gradient(to right, #333333, #585a5f);
       border: none;
       border-radius: 4px;
     }
@@ -634,11 +634,3 @@ footer{
      
     }
   }
-
-
-
-
- 
-
-
-

@@ -5,7 +5,7 @@
 
 
 /* CORES */
-const colors = ["blue", "yellow", "red", "orange", "pink", "green", "purple"]
+const colors = ["blue", "yellow", "red", "orange", "pink"]
 let currentColor = Math.floor(Math.random() * colors.length)
 let nextColor = Math.floor(Math.random() * colors.length)
 
@@ -223,37 +223,6 @@ let $grid = document.querySelector(".grid")
 
 
 function checkIfRowIsFilled() { // verificação linha a linha
-  // for (var row = 0; row < $gridSquares.length; row += gridWidth) { // executa a verificação até a último quadradinho, 209
-  //   let currentRow = []
-
-
-  //   for (var square = row; square < row + gridWidth; square++) { // pega cada quadrado dentro da linha (row)
-  //     currentRow.push(square) // adiciona o quadradinho dentro da lista currentRow
-  //   }
-
-
-  //   const isRowPainted = currentRow.every(square => // verifica se todos os quadradinhos da linha estão pintados
-  //     $gridSquares[square].classList.contains("shapePainted")
-  //   )
-
-
-  //   if (isRowPainted) { // se a linha estiver pintada...
-  //     const squaresRemoved = $gridSquares.splice(row, gridWidth) // splice( primeiro indice a ser removido, qtd de posições a serem removidos )
-  //     squaresRemoved.forEach(square =>
-  //       // square.classList.remove("shapePainted", "filled")
-  //       square.removeAttribute("class") // remove as classes que faz com que pinte as peças, deixando-a como o fundo
-  //     )
-  //     $gridSquares = squaresRemoved.concat($gridSquares) // pega a linha completada e coloca em cima, no início
-  //     $gridSquares.forEach(square => $grid.appendChild(square))
-  //     updateLine(1)
-  //     updateScore(100) // pontuação para linha completada = 100
-
-
-  //     completedLineAudio.play() // tocando o audio
-  //   }
-  // }
-
-
 
 
   for (var row = 0; row < $gridSquares.length; row += gridWidth) {
@@ -267,15 +236,18 @@ function checkIfRowIsFilled() { // verificação linha a linha
 
     const isRowPainted = currentRow.every(square =>
       $gridSquares[square].classList.contains("shapePainted")
+
+
     )
 
 
     if (isRowPainted) {
       const squaresRemoved = $gridSquares.splice(row, gridWidth)
-
+     
       // Remova todas as classes de cor e 'shapePainted'
       squaresRemoved.forEach(square => {
-        square.classList.remove("shapePainted", "filled")
+        square.classList.remove("filled")
+        square.classList.remove("shapePainted")
         colors.forEach(color => square.classList.remove(color)) // Removendo qualquer cor restante
       })
 
@@ -288,8 +260,27 @@ function checkIfRowIsFilled() { // verificação linha a linha
       // Atualiza o score e linha
       updateLine(1)
       updateScore(100)
-
+     
       completedLineAudio.play() // tocando o áudio de linha completada
+    }
+  }
+
+
+}
+
+
+// Função para garantir que todos os quadrados sem "shapePainted" também não tenham a classe "filled"
+function removeEmptyFilledClasses() {
+  for (var square = 0; square < $gridSquares.length; square++) {
+    // Ignorar as divs nas posições de 201 a 210
+    if (square >= 200 && square <= 210) {
+      continue; // pula a iteração se o quadrado estiver entre 201 e 210
+    }
+
+
+    // Se o quadrado não tiver "shapePainted", remover a classe "filled"
+    if (!$gridSquares[square].classList.contains("shapePainted")) {
+      $gridSquares[square].classList.remove("filled");
     }
   }
 }
@@ -297,8 +288,6 @@ function checkIfRowIsFilled() { // verificação linha a linha
 
 /* GAME OVER */
 const $gameover = document.querySelector(".gameover");
-const $Btngameover = document.querySelector("#gameoverBotoes");
-
 
 
 function gameOver() {
@@ -306,8 +295,8 @@ function gameOver() {
     $gridSquares[squareIndex + currentPosition].classList.contains("filled")
   )) {
     $gameover.style.display = 'block';
-    overlay.style.display = 'block';
-    $Btngameover.style.display = 'block';
+
+
     updateScore(-10)
     clearInterval(timerId)
     timerId = null
@@ -325,6 +314,8 @@ function freeze() {
   if (currentShape.some(squareIndex => // se algum quadrinho
     $gridSquares[squareIndex + currentPosition + gridWidth].classList.contains("filled") // se + gridWidth -> quadradinho abaixo, tem essa class "filled"
   )) {
+   
+    checkIfRowIsFilled()
 
 
     // se encostar em alguma div com class "filled", então, se torna um "filled", também
@@ -338,11 +329,11 @@ function freeze() {
     currentShape = allShapes[randomShape][currentRotation]
     currentColor = nextColor
     draw()
-
-
-    checkIfRowIsFilled() // verifica se completou a linha
-
-
+   
+    checkIfRowIsFilled()
+    removeEmptyFilledClasses()
+    
+   
     updateScore(10) // quando uma peça para, ganha 10 pts
     // shapeFreezeAudio.play() //tocando o audio
     displayNextShape()
@@ -456,23 +447,6 @@ function controlKeyboard(event) {
 
 
 /* MOVIMENTAÇÃO - BOTÕES NA TELA */
-// const isMobile = window.matchMedia('(max-width: 990px)').matches
-// if (isMobile) {
-//   const mobileButtons = document.querySelectorAll(".mobile-buttons-container button")
-//   mobileButtons.forEach(button => button.addEventListener("click", () => {
-//     if (timerId) {
-//       if (button.classList[0] === "left-button") {
-//         moveLeft()
-//       } else if (button.classList[0] === "right-button") {
-//         moveRight()
-//       } else if (button.classList[0] === "down-button") {
-//         moveDown()
-//       } else if (button.classList[0] === "rotate-button") {
-//         rotate()
-//       }
-//     }
-//   }))
-// }
 const mobileButtons = document.querySelectorAll(".mobile-buttons-container button")
 const telaButtons = document.querySelectorAll(".tela-buttons-container button")
 
@@ -505,22 +479,6 @@ const telaButtons = document.querySelectorAll(".tela-buttons-container button")
       }
     }
   }))
-
-let btnGameoverHome = document.querySelector("#homeGameover");
-let btnGameoverRestart = document.querySelector("#restartGameover");
-
-
-btnGameoverHome.addEventListener("click", 
-  function(){
-    window.location.href = "index.html";
-  }
-);
-
-btnGameoverRestart.addEventListener("click", 
-  function(){
-    window.location.reload();
-  }
-);
 
 
 
