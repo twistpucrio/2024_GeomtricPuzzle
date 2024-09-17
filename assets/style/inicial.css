@@ -97,7 +97,7 @@ a{
 }
 
 #conteudo{
-    background-image: url('../img/gettyimages-2112621265-612x612.jpg');
+    background-image: url('../img/mudada.png');
 }
 
 nav{
@@ -196,7 +196,7 @@ section{
         background-color: rgb(36, 35, 35);
         font-family:"antiqua";
         position: relative;
-        top: -10vh; 
+        top: -40vh; 
         font-size:xx-large;
 
         animation-duration: 6s;
