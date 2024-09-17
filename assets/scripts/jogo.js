@@ -177,11 +177,14 @@ function moveDown() {
 const $score = document.querySelector(".score")
 let score = 0
 
+const $level = document.querySelector(".nivel")
+let level = 1
+
 
 function updateScore(updateValue) {
   score += updateValue
   $score.textContent = score // alterando no html o score
-
+  
 
   clearInterval(timerId)
   if (score <= 450) {
@@ -189,15 +192,25 @@ function updateScore(updateValue) {
   }
   else if (450 < score && score <= 1000) {
     timeMoveDown = 400
+    level = 2
   } else if (1000 < score && score <= 1700) {
     timeMoveDown = 300
+    level = 3
   } else if (1700 < score && score <= 2700) {
     timeMoveDown = 200
+    level = 4
+
   } else if (2700 < score && score <= 3850) {
     timeMoveDown = 150
+    level = 5
+
   } else {
     timeMoveDown = 110
+    level = 6
+
   }
+  $level.textContent = level
+
   timerId = setInterval(moveDown, timeMoveDown)
 }
 
