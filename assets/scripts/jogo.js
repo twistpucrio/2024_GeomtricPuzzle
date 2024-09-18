@@ -5,7 +5,7 @@
 
 
 /* CORES */
-const colors = ["blue", "yellow", "red", "orange", "pink"]
+const colors = ["blue", "yellow", "red", "orange", "pink", "green", "purple"]
 let currentColor = Math.floor(Math.random() * colors.length)
 let nextColor = Math.floor(Math.random() * colors.length)
 
@@ -301,14 +301,15 @@ function removeEmptyFilledClasses() {
 
 /* GAME OVER */
 const $gameover = document.querySelector(".gameover");
-
+const $Btngameover = document.querySelector("#gameoverBotoes");
 
 function gameOver() {
   if (currentShape.some(squareIndex =>
     $gridSquares[squareIndex + currentPosition].classList.contains("filled")
   )) {
     $gameover.style.display = 'block';
-
+    $Btngameover.style.display = 'block';
+    overlay.style.display = "block";
 
     updateScore(-10)
     clearInterval(timerId)
@@ -494,4 +495,19 @@ const telaButtons = document.querySelectorAll(".tela-buttons-container button")
   }))
 
 
-
+  let btnGameoverHome = document.querySelector("#homeGameover");
+  let btnGameoverRestart = document.querySelector("#restartGameover");
+  
+  
+  btnGameoverHome.addEventListener("click", 
+    function(){
+      window.location.href = "index.html";
+    }
+  );
+  
+  btnGameoverRestart.addEventListener("click", 
+    function(){
+      window.location.reload();
+    }
+  );
+  
