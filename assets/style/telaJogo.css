@@ -404,6 +404,15 @@ footer{
 
   /* DESKTOP */
   @media screen and (min-width: 1024px) /* 1024 ou mais*/ {
+
+    .game{
+      display:inline;
+    }
+
+    .over{
+      display:inline;
+    }
+
     .grid {
       width: 425px;
       height: 850px;
@@ -469,6 +478,15 @@ footer{
  
   /* TABLET */
   @media screen and (min-width: 800px) and (max-width: 1023px){
+
+    .game{
+      display:block;
+    }
+
+    .over{
+      display:block;
+    }
+
     .grid {
       width: 425px;
       height: 850px;
@@ -550,6 +568,15 @@ footer{
 
 
   @media screen and (min-width: 1px) and (max-width: 800px){
+
+    .game{
+      display:block;
+    }
+
+    .over{
+      display:block;
+    }
+
     .content-container {
       display: flex;
       /* justify-content: center; */
