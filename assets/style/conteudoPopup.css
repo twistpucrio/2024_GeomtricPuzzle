@@ -55,16 +55,22 @@ li{
     color: #5e1468; /* Altere para a cor desejada no clique */
 }
 
-/* .jogabilidadeLinha{
-    display: inline;
-    width: 12vw;
-    height: auto;
-    text-align: center;
-} */
 
 .explicacao{
     width: 100%;
     height: 100%;
 }
 
+
+
+
+/* SMARTPHONE  -> enquanto a tela for menor que 767px*/
+ @media screen and (min-width: 1px) and (max-width: 800px){
+    
+    #jogabilidade{
+        width: 90%;
+        height: 60%;
+    }
+
+}
 
