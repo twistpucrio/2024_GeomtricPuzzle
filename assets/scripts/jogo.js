@@ -5,7 +5,7 @@
 
 
 /* CORES */
-const colors = ["blue", "yellow", "red", "orange", "pink"]
+const colors = ["blue", "yellow", "red", "orange", "pink", "green", "purple"]
 let currentColor = Math.floor(Math.random() * colors.length)
 let nextColor = Math.floor(Math.random() * colors.length)
 
@@ -177,11 +177,14 @@ function moveDown() {
 const $score = document.querySelector(".score")
 let score = 0
 
+const $level = document.querySelector(".nivel")
+let level = 1
+
 
 function updateScore(updateValue) {
   score += updateValue
   $score.textContent = score // alterando no html o score
-
+  
 
   clearInterval(timerId)
   if (score <= 450) {
@@ -189,15 +192,25 @@ function updateScore(updateValue) {
   }
   else if (450 < score && score <= 1000) {
     timeMoveDown = 400
+    level = 2
   } else if (1000 < score && score <= 1700) {
     timeMoveDown = 300
+    level = 3
   } else if (1700 < score && score <= 2700) {
     timeMoveDown = 200
+    level = 4
+
   } else if (2700 < score && score <= 3850) {
     timeMoveDown = 150
+    level = 5
+
   } else {
     timeMoveDown = 110
+    level = 6
+
   }
+  $level.textContent = level
+
   timerId = setInterval(moveDown, timeMoveDown)
 }
 
@@ -288,14 +301,15 @@ function removeEmptyFilledClasses() {
 
 /* GAME OVER */
 const $gameover = document.querySelector(".gameover");
-
+const $Btngameover = document.querySelector("#gameoverBotoes");
 
 function gameOver() {
   if (currentShape.some(squareIndex =>
     $gridSquares[squareIndex + currentPosition].classList.contains("filled")
   )) {
     $gameover.style.display = 'block';
-
+    $Btngameover.style.display = 'block';
+    overlay.style.display = "block";
 
     updateScore(-10)
     clearInterval(timerId)
@@ -330,7 +344,9 @@ function freeze() {
     currentColor = nextColor
     draw()
    
+    checkIfRowIsFilled()
     removeEmptyFilledClasses()
+    
    
     updateScore(10) // quando uma peça para, ganha 10 pts
     // shapeFreezeAudio.play() //tocando o audio
@@ -479,4 +495,19 @@ const telaButtons = document.querySelectorAll(".tela-buttons-container button")
   }))
 
 
-
+  let btnGameoverHome = document.querySelector("#homeGameover");
+  let btnGameoverRestart = document.querySelector("#restartGameover");
+  
+  
+  btnGameoverHome.addEventListener("click", 
+    function(){
+      window.location.href = "index.html";
+    }
+  );
+  
+  btnGameoverRestart.addEventListener("click", 
+    function(){
+      window.location.reload();
+    }
+  );
+  

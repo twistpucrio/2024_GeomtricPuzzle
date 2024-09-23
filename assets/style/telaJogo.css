@@ -472,7 +472,16 @@ footer{
   /* tablet -> min-width: 768px e max-width: 1023px */
   /* max-width: 767px */
 
+ /* DESKTOP */
+ @media screen and (min-width: 1024px) /* 1024 ou mais*/ {
 
+  .game{
+    display:inline;
+  }
+
+  .over{
+    display:inline;
+  }
 
 
   /* TABLET */
@@ -487,6 +496,8 @@ footer{
     .over{
       display:block;
     }
+
+
 
 
     .grid {
@@ -583,6 +594,19 @@ footer{
   /* SMARTPHONE  -> enquanto a tela for menor que 767px*/
   @media screen and (max-width: 800px){
 
+    /* #restartGameover{
+      display: none;
+      position: fixed;
+      bottom: 27%;
+      left: 47%;
+    }
+
+    #homeGameover{
+      display: none;
+      position: fixed;
+      bottom: 17%;
+      left: 47%;
+    } */
 
     .game{
       display:block;
