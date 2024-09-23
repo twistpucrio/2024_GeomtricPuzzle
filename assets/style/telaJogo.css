@@ -4,10 +4,16 @@
 }
 
 
+
+
 body{
     margin: 0;
     background: radial-gradient(#5d69cf,#2c2e8b,rgb(36, 31, 70));
 }
+
+
+
+
 
 
 
@@ -24,7 +30,11 @@ nav{
     }
 
 
+
+
 }
+
+
 
 
 section{
@@ -32,13 +42,19 @@ section{
     width: 100vw;
 
 
+
+
     display: flex;
     justify-content: center;
     flex-direction: column;
 
 
+
+
     align-items: center;
     flex-direction: row;
+
+
 
 
     header{
@@ -47,9 +63,13 @@ section{
     }
 
 
+
+
     .telaJogo{
         width: 576px;
         height: 80vh;
+
+
 
 
         border: 2px solid black;
@@ -59,7 +79,11 @@ section{
         margin-right: 5vw;
 
 
+
+
     }
+
+
 
 
     .estadoJogo{
@@ -67,9 +91,13 @@ section{
         height: 50vh;
 
 
+
+
         border: 2px solid black;
         background-color: rgb(31, 29, 34);
         border-radius: 20px;
+
+
 
 
         margin-right: 20px;
@@ -95,6 +123,8 @@ section{
     }
 
 
+
+
     .mini-grid{
         width: 20vw;
         height: 50vh;
@@ -110,12 +140,22 @@ section{
 
 
 
+
+
+
+
+
+
 }
+
+
 
 
 footer{
     border-top: 2px solid black;
 } */
+
+
 
 
  * {
@@ -138,17 +178,23 @@ footer{
  
 
 
+
+
   .buttons-container {
-    margin-bottom: 16px;
-    width: 100px;
+    margin-bottom: 1.6px;
+    width: 10vw;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
 
 
+
+
     button {
       cursor: pointer;
     }
+
+
 
 
     button:disabled {
@@ -157,6 +203,8 @@ footer{
     }
    
   }
+
+
 
 
   .buttons-container button {
@@ -175,27 +223,26 @@ footer{
   }
 
 
+
+
   .content-container {
     display: flex;
-    justify-content: center;
-    flex-direction: column;
-
-
     align-items: center;
-    flex-direction: row;
+    justify-content: center;
+
+
   }
  
   /* board de jogo */
   .grid {
-    width: 400px;
-    height: 800px;
+    width: 27vw;
+    height: 90vh;
    
     /* border: 2px solid black; */
-    background-color: rgb(23, 22, 32);
+    background-color: rgba(0, 0, 0, 0.5);
    
     border-radius: 10px;
-   
-    margin-top: 20px;
+    margin-top: 3vh;
 
 
     display: flex; /* colocando uma div ao lado da outra*/
@@ -203,8 +250,9 @@ footer{
   }
  
   .grid div {
-    width: 40px;
-    height: 40px;
+    width: 2.7vw;
+    height: 4.5vh;
+   
   }
  
   /* .content-right {
@@ -214,35 +262,57 @@ footer{
   } */
  
   #estadoJogo{
-    margin-left: 90px;
+    margin-left: 9vw;
+    margin-top: 2vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding: 20px;
+
+
+    border: 2px solid #29637e;
+    border-radius: 20px;
+
+
+    h3{
+      padding: 1vh;
+    }
+
+
+    .h3{
+      font-size: 30px;
+      margin-top: 3vh;
+    }
   }
 
 
+
+
   .mini-grid {
-    width: 175px;
-    height: 175px;
-    background-color: black;
+    width: 17.5vw;
+    height: 28vh;
+    background-color: rgba(0, 0, 0, 0.5);
     border-radius: 20px;
     display: flex;
     flex-wrap: wrap;
 
 
+    margin-top: 6vh;
   }
  
   .mini-grid div {
-    width: 25px;
-    height: 25px;
+    width: 2.3vw;
+    height: 4.2vh;
   }
+
+
 
 
   /* Score */
-  .content-right h3 {
+  /* .content-right h3 {
     font-size: 32px;
     margin-top: 24px;
-  }
+  } */
  
   /* PEÇAS */
   .shapePainted {
@@ -269,27 +339,33 @@ footer{
     background: linear-gradient(to right, #cc005f, #ff80ce, #ff99dd);
     }
 
+
     .green {
       background: linear-gradient(to right, #00cc22, #80ff95, #99ffa2);
     }
-  
+ 
     .purple {
       background: linear-gradient(to right, #a300cc, #f080ff, #f399ff);
     }
  
   .tela-buttons-container{
-    margin-top: 20px;
-    max-width: 300px;
+    margin-top: 8vh;
+    max-width: 30vw;
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* com 3 colunas de mesmo tamanho*/
-    grid-template-rows: 64px 64px; /* cada linha vai ter uma altura de 64px*/
+    grid-template-rows: 90px 90px; /* cada linha vai ter uma altura de 64px*/
     gap: 12px; /* espaço entre eles*/
 
 
+
+
     button{
-      background: linear-gradient(to right, #0033cc, #5c82f4);
+    background-color: rgba(0, 0, 0, 0.5);
+    /* background: linear-gradient(to right, #0033cc, #5c82f4);  */
       border: none;
       border-radius: 4px;
+
+
 
 
       span{
@@ -300,26 +376,7 @@ footer{
   }
  
   .mobile-buttons-container {
-    margin-top: 20px;
-    max-width: 300px;
     display: none;
-    grid-template-columns: repeat(3, 1fr); /* com 3 colunas de mesmo tamanho*/
-    grid-template-rows: 64px 64px; /* cada linha vai ter uma altura de 64px*/
-    gap: 12px; /* espaço entre eles*/
- 
-    button{
-      background: linear-gradient(to right, #0033cc, #5c82f4);
-      border: none;
-      border-radius: 4px;
-
-
-      span{
-        color: white;
-        font-weight: 700;
-      }
-    }
-
-
   }
  
  
@@ -334,10 +391,6 @@ footer{
     /* z-index: 1; */
     display: none;
   }
-
-
-
-
 
 
 .popup {
@@ -366,7 +419,11 @@ footer{
   flex-direction: column;
 
 
+
+
 }
+
+
 
 
 .popup-content button {
@@ -381,9 +438,13 @@ footer{
 }
 
 
+
+
 .hidden {
   display: none;
 }
+
+
 
 
 .grid.paused {
@@ -393,8 +454,18 @@ footer{
 
 
 
+
+
+
+
  
-  /*  RESPONSIVIDADE  */
+/*  RESPONSIVIDADE  */
+
+
+
+
+
+
 
 
   /* desktop -> min-width: 1024px */
@@ -402,228 +473,190 @@ footer{
   /* max-width: 767px */
 
 
-  /* DESKTOP */
-  @media screen and (min-width: 1024px) /* 1024 ou mais*/ {
-
-    .game{
-      display:inline;
-    }
-
-    .over{
-      display:inline;
-    }
-
-    .grid {
-      width: 425px;
-      height: 850px;
-      background-color: rgb(0, 0, 0);
-      display: flex; /* colocando uma div ao lado da outra*/
-      flex-wrap: wrap; /* faz com que complita uma linha e vá para a de baixo */
-    }
-   
-    .grid div {
-      width: 42.5px;
-      height: 42.5px;
-    }
 
 
-    #estadoJogo{
-      margin-left: 90px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-
-
-      .mini-grid {
-        width: 210px;
-        height: 210px;
-       
-        margin-top: 100px;
-        margin-bottom: 100px;
-        background-color: black;
-        border-radius: 20px;
-        display: flex;
-        flex-wrap: wrap;
-   
-        div {
-          width: 30px;
-          height: 30px;
-        }
-      }
-
-
-      .tela-buttons-container{
-        margin-top: 100px;
-        margin-left: -30px;
-        width: 250px;
-        height: 200px;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr); /* com 3 colunas de mesmo tamanho*/
-        grid-template-rows: 64px 64px; /* cada linha vai ter uma altura de 64px*/
-        gap: 12px; /* espaço entre eles*/
-   
-        button{
-          background: linear-gradient(to right, #0033cc, #5c82f4);
-          border: none;
-          border-radius: 4px;
-   
-          span{
-            color: white;
-            font-weight: 700;
-          }
-        }
-      }
-  }
-}
- 
   /* TABLET */
-  @media screen and (min-width: 800px) and (max-width: 1023px){
+  @media screen and (min-width: 800px) and (max-width: 1280px){
+
 
     .game{
       display:block;
     }
 
+
     .over{
       display:block;
     }
 
+
     .grid {
-      width: 425px;
-      height: 850px;
-      background-color: green;
+      width: 42.5vw;
+      height: 85.0vh;
+      /* background-color: green; */
       display: flex; /* colocando uma div ao lado da outra*/
       flex-wrap: wrap; /* faz com que complita uma linha e vá para a de baixo */
+     
+      margin-bottom: 10vh;
     }
    
     .grid div {
-      width: 42.5px;
-      height: 42.5px;
+      width: 4.25vw;
+      height: 4.25vh;
     }
 
 
+
+
     #estadoJogo{
-      margin-left: 90px;
+      margin-left: 9vw;
+      margin-top: 0vh;
+      margin-bottom: 10vh;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
 
 
+      border: 1px solid #29637e;
+      border-radius: 20px;
+   
+      h3{
+        padding: 1vh;
+      }
+      .h3{
+        font-size: 30px;
+        margin-top: 3vh;
+      }
+
+
       .mini-grid {
-        width: 210px;
-        height: 210px;
+        width: 21vw;
+        height: 21vh;
        
-        margin-top: 100px;
-        margin-bottom: 100px;
-        background-color: black;
+        margin-bottom: 0vh;
+        /* background-color: black; */
         border-radius: 20px;
         display: flex;
         flex-wrap: wrap;
    
         div {
-          width: 30px;
-          height: 30px;
-        }
-      }
-
-
-      .tela-buttons-container{
-        margin-top: 100px;
-        margin-left: -30px;
-        width: 250px;
-        height: 200px;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr); /* com 3 colunas de mesmo tamanho*/
-        grid-template-rows: 64px 64px; /* cada linha vai ter uma altura de 64px*/
-        gap: 12px; /* espaço entre eles*/
-   
-        button{
-          background: linear-gradient(to right, #0033cc, #5c82f4);
-          border: none;
-          border-radius: 4px;
-   
-          span{
-            color: white;
-            font-weight: 700;
-          }
+          width: 3vw;
+          height: 3vh;
         }
       }
     }
 
 
+
+
+    .tela-buttons-container{
+      margin-top: 5vh;
+      max-width: 30vw;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* com 3 colunas de mesmo tamanho*/
+      grid-template-rows: 90px 90px; /* cada linha vai ter uma altura de 64px*/
+      gap: 12px; /* espaço entre eles*/
+ 
+ 
+      button{
+        /* background: linear-gradient(to right, #333333, #585a5f); */
+        background: linear-gradient(to right, #333333, #585a5f);
+        background:  rgba(0, 0, 0, 0.5);
+        border: none;
+        border-radius: 4px;
+ 
+ 
+        span{
+          color: white;
+          font-weight: 700;
+        }
+      }
    
+    }
    
     .popup {
       width: 35vw;
       height: 35vh;
     }
-
-   
   }
 
 
-
-
   /* SMARTPHONE  -> enquanto a tela for menor que 767px*/
- 
+  @media screen and (max-width: 800px){
 
-
-  @media screen and (min-width: 1px) and (max-width: 800px){
 
     .game{
       display:block;
     }
 
+
     .over{
       display:block;
     }
+
 
     .content-container {
       display: flex;
       /* justify-content: center; */
       flex-direction: row;
- 
+
+
+      align-items: center;
+      justify-content: center;
       /* align-items:normal; */
     }
-    
-    body{
+   
+    /* body{
       align-items: center;
-    }
+    } */
    
     .grid {
-      width: 320px;
-      height: 700px;
-      background-color: rgb(186, 97, 228);
+      width: 60vw;
+      height: 80vh;
       display: flex; /* colocando uma div ao lado da outra*/
       flex-wrap: wrap; /* faz com que complita uma linha e vá para a de baixo */
    
-      margin-top: 20px;
+      margin-top: 1vh;
     }
    
     .grid div {
-      width: 32px;
-      height: 35px;
+      width: 6vw;
+      height: 4vh;
     }
+
+
 
 
     #estadoJogo{
       display:flex;
       align-items: center;
 
-      margin-left: 15px;
-      max-width: 200px;
+
+
+
+      margin-left: 1.5vw;
+      max-width: 30vw;
      
       .mini-grid {
-        width: 154px;
-        height: 154px;
-        background-color: black;
+        width: 21vw;
+        height: 17vh;
+        /* background-color: black; */
         border-radius: 20px;
         display: flex;
         flex-wrap: wrap;
    
         div {
-          width: 22px;
-          height: 22px;
+          width: 3vw;
+          height: 2.7vh;
         }
+      }
+
+
+      h3{
+        padding: 1vh;
+      }
+      .h3{
+        font-size: 23px;
+        margin-top: 3vh;
       }
     }
 
@@ -633,25 +666,25 @@ footer{
     }
 
 
+
+
     .mobile-buttons-container {
-      margin-top: 80px;
-      margin-bottom: 0px;
-      margin-left: 130px;
+      margin-top: 1vh;
+      margin-bottom: 0%;
+      margin-left: 13vw;
      
-      max-width: 300px;
-      max-height: 0px;
+      max-width: 55vw;
 
 
       display: grid;
       grid-template-columns: repeat(3, 1fr); /* com 3 colunas de mesmo tamanho*/
-      grid-template-rows: 64px 64px; /* cada linha vai ter uma altura de 64px*/
+      grid-template-rows: 70px 70px; /* cada linha vai ter uma altura de 64px*/
       gap: 12px; /* espaço entre eles*/
     }
-
-
    
     .mobile-buttons-container button {
-      background: linear-gradient(to right, #333333, #585a5f);
+      /* background: linear-gradient(to right, #333333, #585a5f); */
+      background-color:  rgba(0, 0, 0, 0.5);
       border: none;
       border-radius: 4px;
     }
@@ -663,8 +696,11 @@ footer{
 
 
     .popup {
-      width: 30vw;
+      width: 40vw;
       height: 30vh;
      
     }
   }
+
+
+

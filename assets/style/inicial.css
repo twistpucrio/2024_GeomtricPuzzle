@@ -111,7 +111,7 @@ a{
 
 
 #conteudo{
-    background-image: url('../img/mudada.png');
+    background-image: url('../img/gettyimages-2112621265-612x612.jpg');
 }
 
 
@@ -363,10 +363,10 @@ footer{
    
             p {
                 display: inline-block;
-                font-size: 50px;
+                font-size: 55px;
                 font-family: "antiqua";
                 animation-duration: 1s;
-                letter-spacing: 30px;
+                letter-spacing: 35px;
                 animation-fill-mode: forwards;
                
                
@@ -418,7 +418,7 @@ footer{
     }
    
 }
-
+   
 
 
 
